@@ -1,0 +1,19 @@
+{
+  "name": "cardealership",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stephepush/carDealership.git"
+  },
+  "author": "Stephen Peters",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stephepush/carDealership/issues"
+  },
+  "homepage": "https://github.com/stephepush/carDealership#readme"
+}
