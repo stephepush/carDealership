@@ -1,5 +1,10 @@
+const path = require('path');
+
 const express = require('express');
+
+app.set('view engine', 'ejs');
+app.set('views', 'views');
 
 const app = express();
 
-applicationCache.listen(3000);
+app.listen(3000);
