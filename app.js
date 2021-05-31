@@ -5,6 +5,8 @@ const express = require('express');
 
 const app = express();
 
+app.use(express.urlencoded());
+
 const adminRoutes = require('./routes/admin');
 const lotRoutes = require('./routes/lot');
 
