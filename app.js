@@ -11,6 +11,7 @@ app.set('view engine', 'ejs');
 app.set('views', 'views');
 
 app.use(adminRoutes);
+app.use(lotRoutes);
 
 app.use((req, res, next) => {
     console.log('This is a console test');
