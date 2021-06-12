@@ -17,7 +17,7 @@ app.use('/admin', adminRoutes);
 app.use(lotRoutes);
 
 app.use((req, res, next) => {
-    res.status(404).render('404', { pageTitle: '404 Page' })
+    res.status(404).render('./404', { pageTitle: '404 Page' })
 })
 
 /* app.use((req, res, next) => {
