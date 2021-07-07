@@ -11,6 +11,8 @@ router.get('/add-car', (req, res, next) => {
     res.send()
 })
 
+router.get('/vehicles', adminController.getVehicles);
+
 router.post('/add-car', (req, res, next) => {
     console.log(req.body);
     res.redirect('/')
