@@ -1,10 +1,14 @@
 const path = require('path');
 
+const Router = require('express-promise-router')
+
 const express = require('express');
 
 const adminController = require('../controllers/admin')
 
-const router = express.Router();
+
+//const router = express.Router();
+const router = new Router()
 
 
 router.get('/add-car', (req, res, next) => {

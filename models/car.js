@@ -1,5 +1,7 @@
-import db from './database';
+const { query, pool } = require('./database');
+//import pool from './database';
 
+//change name to Vehicle in a later commit
 module.exports = class Car {
     constructor( 
         id, model_year, make, model, miles,
@@ -17,14 +19,28 @@ module.exports = class Car {
             this.car_price = car_price
         }
 
+        save() {
+            client.query('BEGIN', err => {
+
+            })
+        }
+
         static deleteById(id) {}
 
-        
-        static fetchAll() {
-            return db.execute('SELECT * FROM cars')
+
+        static async fetchAll() {
+            try{
+                const res = await query('SELECT * FROM cars')
+                
+            }
+            catch(e) {
+                console.log('Catch an error: ', e)
+            }
+            //await pool.end()
+
         }
 
         static findById(id) {
-            return db.execute('SELECT * FROM products WHERE products.id = ?', [id]);
+            //return db.execute('SELECT * FROM products WHERE products.id = ?', [id]);
         }
 }
