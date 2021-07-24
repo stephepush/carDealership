@@ -30,8 +30,8 @@ module.exports = class Car {
 
         static async fetchAll() {
             try{
-                const res = await query('SELECT * FROM cars')
-                
+                const rows= await query('SELECT * FROM cars')
+                //return rows
             }
             catch(e) {
                 console.log('Catch an error: ', e)
