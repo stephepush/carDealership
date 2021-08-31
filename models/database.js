@@ -1,21 +1,9 @@
 
-//const Promise = require('bluebird')
+var mysql      = require('mysql');
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'admin',
+  password : 'hello',
+  database : 'node-autos'
+});
 
-const { Pool } = require('pg')
-
-const pool = new Pool({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'express-autos-test',
-    password: 'hello',
-    port: 5432,
-  })
-
-
-  module.exports = {
-
-    query: (text, params) => pool.query(text, params),
-    selectQuery: (query) => pool.query(query),
-    paramlessQuery: (text) => pool.query(text)
-
-  };
