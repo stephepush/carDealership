@@ -1,4 +1,4 @@
-const { selectQuery, query, paramlessQuery } = require('./database');
+const db = require('./database');
 //import pool from './database';
 
 //const pool = new Pool;
@@ -21,10 +21,18 @@ module.exports = class Car {
         }
 
 
-        save() {
-            client.query('BEGIN', err => {
-
-            })
+        static create(id, model_year, make, model, miles,
+            color, transmission, layout, engine_config, car_photo_url, car_price) {
+                db.tx(async t => {
+                    await t.none('INSERT INTO');
+                    await t.none('INSERT INTO');
+                })
+                .then(() => {
+                    console.log("success!")
+                })
+                .catch(error => {
+                    console.log('ERROR:', error);
+                })
         }
 
         static deleteById(id) {}

@@ -1,6 +1,15 @@
 
-//const Promise = require('bluebird')
+const promise = require('bluebird');
 
+const options = {
+  promiseLib: promise,
+  query: e => {
+    console.log(e.query);
+  }
+}
+
+
+/* 
 const { Pool } = require('pg')
 
 const pool = new Pool({
@@ -11,11 +20,26 @@ const pool = new Pool({
     port: 5432,
   })
 
+ */
 
-  module.exports = {
+  const pgp = require('pg-promise')(options)
+
+  const connectionString = {
+    host: 'localhost',
+    port: 5432,
+    database: 'express-autos-test',
+    user: 'postgres',
+    password: 'hello',
+    max: 30
+  }
+
+  const db = pgp(connectionString)
+  module.exports = db;
+  
+  /* {
 
     query: (text, params) => pool.query(text, params),
     selectQuery: (query) => pool.query(query),
     paramlessQuery: (text) => pool.query(text)
 
-  };
+  }; */
