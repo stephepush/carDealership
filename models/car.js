@@ -24,8 +24,8 @@ module.exports = class Car {
         static create(id, model_year, make, model, miles,
             color, transmission, layout, engine_config, car_photo_url, car_price) {
                 db.tx(async t => {
-                    await t.none('INSERT INTO');
-                    await t.none('INSERT INTO');
+                    await t.none('INSERT INTO cars(model_year, make, model, miles, color, transmission, layout, engine_config) VALUES($1, $2, $3, $4, $5, $6, $7, $8)', [/*input from forms*/]);
+                    await t.none('INSERT INTO car_photos(car_photo_url) VALUES($1)', [/*Input from forms */]);
                 })
                 .then(() => {
                     console.log("success!")
@@ -33,6 +33,11 @@ module.exports = class Car {
                 .catch(error => {
                     console.log('ERROR:', error);
                 })
+        }
+
+        static fetchAll () {
+            return db.any('SELECT * FROM cars ')
+            
         }
 
         static deleteById(id) {}
@@ -74,23 +79,7 @@ module.exports = class Car {
             
         } */
 
-        static fetchAll = async()=> {
-            return new Promise(async function(resolve, reject){
-                try {
-                    let results = await query('SELECT * FROM cars');
-                    console.log(results)
-                    return resolve(results);
-                } catch (err) {
-                    console.log(err)
-                    return reject(err);
-                }
 
-                console.log(results.rows)
-               //return results
-            })
-            
-            
-        }
 
 /*         static findById(id) {
             //return db.execute('SELECT * FROM products WHERE products.id = ?', [id]);
