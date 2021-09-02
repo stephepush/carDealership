@@ -1,5 +1,16 @@
-const { selectQuery, query, paramlessQuery } = require('./database');
+const  {connection}  = require('./database');
 //import pool from './database';
+
+
+connection.query ('SELECT CURRENT_USER()', function(error, results){
+   if (results){
+     console.log(results);
+   }
+   else{
+     console.log(error);
+   }
+});
+connection.end();
 
 //const pool = new Pool;
 //change name to Vehicle in a later commit
