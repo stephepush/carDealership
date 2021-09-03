@@ -1,16 +1,18 @@
-const  {connection}  = require('./database');
-//import pool from './database';
+const  {conn}  = require('./database');
+//import conn from './database';
 
 
-connection.query ('SELECT CURRENT_USER()', function(error, results){
-   if (results){
-     console.log(results);
-   }
-   else{
-     console.log(error);
-   }
+conn
+.then(conn => {conn.query('SELECT CURRENT_USER()')
+    .then(rows => {
+        console.log(rows)
+        conn.end
+    })
+    .catch(error => {
+        console.log('there seems to be an error: ' + error.stack)
+    })
 });
-connection.end();
+//connection.end();
 
 //const pool = new Pool;
 //change name to Vehicle in a later commit
