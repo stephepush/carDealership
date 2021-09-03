@@ -1,19 +1,18 @@
-const  {conn}  = require('./database');
-//import conn from './database';
+const  db = require('./database');
+//import { conn } from './database';
 
 
-conn
-.then(conn => {conn.query('SELECT CURRENT_USER()')
-    .then(rows => {
-        console.log(rows)
-        conn.end
-    })
-    .catch(error => {
-        console.log('there seems to be an error: ' + error.stack)
-    })
-});
-//connection.end();
+//connection.end(); */
 
+/* conn
+  .query("SELECT NOW()")
+  .then(rows => {
+	console.log(rows); //[ { 'NOW()': 2018-07-02T17:06:38.000Z }, meta: [ ... ] ]
+  })
+  .catch(err => {
+	//handle error
+  });
+ */
 //const pool = new Pool;
 //change name to Vehicle in a later commit
 module.exports = class Car {
@@ -49,8 +48,14 @@ module.exports = class Car {
         }
 
         static fetchAll () {
-            return db.any('SELECT * FROM cars ')
-            
+            return db.query('SELECT * FROM cars ')
+                /* .try(rows => {
+                    console.log(rows)
+                    conn.end
+                })
+                .catch(error => {
+                    console.log('there seems to be an error: ' + error.stack)
+                }); */
         }
 
 

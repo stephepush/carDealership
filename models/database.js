@@ -1,12 +1,14 @@
 
 const mariadb = require('mariadb');
 
-const conn = mariadb.createConnection({
+const pool = mariadb.createPool({
   host: 'localhost', 
   user: 'admin', 
   password: 'hello',
   database: 'express_autos'
 })
+
+
 /* .then(conn => {
   conn.query("select 1", [2])
     .then(rows => {
@@ -21,8 +23,8 @@ const conn = mariadb.createConnection({
 .catch(err => {
   //handle connection error
   console.log('there seems to be an error: ' + err.stack)
-}); */
-
+}); 
+ */
 
 /* let config = {
   host     : '127.0.0.1',
@@ -32,15 +34,8 @@ const conn = mariadb.createConnection({
   database : 'express-autos'
 }; */
 
-/* let connection = mysql.createConnection(config)
-connection.connect(function(err){
-  if (err){
-    console.log('error connection: ' + err.stack);
-  }
-  console.log(`connected successfully to your mariadb database`)
-}) */
+/* let connection = mysql.createConnection(config)*/
 
-module.exports =  { 
+//pool.connect()
+module.exports = pool;
   //connection : mariadb.createConnection(config) 
-  conn: conn
-};
