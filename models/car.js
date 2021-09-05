@@ -48,14 +48,7 @@ module.exports = class Car {
         }
 
         static fetchAll () {
-            return db.query('SELECT * FROM cars ')
-                /* .try(rows => {
-                    console.log(rows)
-                    conn.end
-                })
-                .catch(error => {
-                    console.log('there seems to be an error: ' + error.stack)
-                }); */
+            return db.execute('SELECT * FROM cars ')
         }
 
 

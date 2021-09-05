@@ -1,14 +1,21 @@
 
-const mariadb = require('mariadb');
+const mysql = require('mysql2');
 
-const pool = mariadb.createPool({
+const pool = mysql.createPool({
   host: 'localhost', 
   user: 'admin', 
   password: 'hello',
   database: 'express_autos'
+
 })
-
-
+/* 
+pool.connect(function(error){
+  if(!!error){
+    console.log(error);
+  }else{
+    console.log('Connected!:)');
+  }
+}); */
 /* .then(conn => {
   conn.query("select 1", [2])
     .then(rows => {
@@ -37,5 +44,5 @@ const pool = mariadb.createPool({
 /* let connection = mysql.createConnection(config)*/
 
 //pool.connect()
-module.exports = pool;
+module.exports = pool.promise();
   //connection : mariadb.createConnection(config) 
