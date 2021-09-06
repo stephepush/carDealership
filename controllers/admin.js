@@ -17,7 +17,7 @@ exports.getVehicles = (req, res, next) => {
             console.log(rows[0]);
             
             res.render('admin/vehicles', {
-                cars: rows,
+                cars: rows[0],
                 pageTitle: 'Dealer Admin Page',
                 path: '/admin/vehicles',
                 
