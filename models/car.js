@@ -47,10 +47,19 @@ module.exports = class Car {
                 })
         }
 
+/*         
         static fetchAll () {
-            return db.execute('SELECT * FROM cars ')
-        }
+            return db.query('SELECT * FROM cars ')
+        } */
 
+        static fetchAll () {
+            var options = {
+                sql: 
+                "SELECT c.car_id, c.model_year, c.make,c.model, c.miles, c.color, c.transmission, c.layout, c.engine_type, p.car_id, p.car_photo_url FROM cars c INNER JOIN car_photos p ON c.car_id = p.car_id", 
+                nestTables: true
+            };
+            return db.query(options)
+        }
 
         save() {
             client.query('BEGIN', err => {

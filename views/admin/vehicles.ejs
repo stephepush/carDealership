@@ -9,7 +9,7 @@
                 <% for (let car of cars) { %>
                     <article class="col">
                         <div class="card shadow-sm">
-                          <svg 
+<!--                      <svg 
                             class="bd-placeholder-img card-img-top" 
                             width="100%" 
                             height="225" 
@@ -18,10 +18,11 @@
                             preserveAspectRatio="xMidYMid slice" focusable="false"
                               <title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/>
                               <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                          </svg>
-              
+                          </svg> -->
+                          <img />
                           <div class="card-body">
-                            <p class="card-text">Car Model: <%= car.model %> </p>
+                            <h2 class="card-text"><%= car.c.model_year %> <%= car.c.make %> <%= car.c.model %> </p>
+
                             <div class="d-flex justify-content-between align-items-center">
                               <div class="btn-group">
                                 <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
