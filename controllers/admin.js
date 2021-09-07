@@ -72,7 +72,13 @@ exports.postAddVehicle = (req, res, next) => {
         .catch(err => console.log(err))
 }
 
-exports.getEditVehicle = (req, res, next) =>{}
+exports.getEditVehicle = (req, res, next) =>{
+    res.render('admin/edit-vehicle', {
+        pageTitle: 'Edit Vehicle',
+        path: '/admin/edit-vehicle',
+        editing: true
+    })
+}
 
 exports.postEditVehicle = (req, res, next) => {}
 
