@@ -63,3 +63,9 @@ exports.postAddVehicle = (req, res, next) => {
         })
         .catch(err => console.log(err))
 }
+
+exports.getEditVehicle = (req, res, next) =>{}
+
+exports.postEditVehicle = (req, res, next) => {}
+
+exports.postDeleteVehicle = (req, res, next) => {}
