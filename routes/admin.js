@@ -15,12 +15,17 @@ router.get('/add-car', (req, res, next) => {
     res.send()
 })
 
+//route for VIEWING ALL vehicles
 router.get('/vehicles', adminController.getVehicles);
 
-router.post('/add-car', (req, res, next) => {
-    console.log(req.body);
-    res.redirect('/')
-})
+//routes for adding, editing and deleting vehicles:
+router.post('/add-vehicle', adminController.postAddVehicle);
+
+router.get('/edit-vehicle/:vehicleId', adminController.getEditVehicle);
+
+router.post('/edit-vehicle', adminController.postEditVehicle);
+
+router.post('/delete-vehicle', adminController.postDeleteVehicle);
 
 
 module.exports = router;

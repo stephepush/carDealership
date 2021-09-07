@@ -43,7 +43,7 @@ exports.getVehicles = (req, res, next) => {
         .catch(err => console.log(err));
 }
 
-exports.postAddCar = (req, res, next) => {
+exports.postAddVehicle = (req, res, next) => {
     const model_year = req.body.title;
     const make = req.body.model_year;
     const model = req.body.model;
