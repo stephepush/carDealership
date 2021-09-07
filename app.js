@@ -14,14 +14,14 @@ const lotRoutes = require('./routes/lot');
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');
-app.locals.modelYearRange = function(startYear) {
+/* app.locals.modelYearRange = function(startYear) {
         var currentYear = new Date().getFullYear(), years = [];
         startYear = startYear || 1980;
         while ( startYear  <= currentYear ) {
             years.push(startYear++);
         }
         return years;
-    };
+    }; */
 
 console.log(app.locals.modelYearRange(1901))
 
