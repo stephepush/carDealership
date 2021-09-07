@@ -1,3 +1,4 @@
+const { response } = require('express');
 const Car = require('../models/car');
 
 /* exports.getVehicles = (req, res, next) => {
@@ -73,10 +74,14 @@ exports.postAddVehicle = (req, res, next) => {
 }
 
 exports.getEditVehicle = (req, res, next) =>{
+    const editMode = req.query.edit;
+    if (!editMode) {
+        return res.redirect('/');
+    }
     res.render('admin/edit-vehicle', {
         pageTitle: 'Edit Vehicle',
         path: '/admin/edit-vehicle',
-        editing: true
+        editing: editMode
     })
 }
 
