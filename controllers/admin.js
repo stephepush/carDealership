@@ -42,3 +42,24 @@ exports.getVehicles = (req, res, next) => {
         })
         .catch(err => console.log(err));
 }
+
+exports.postAddCar = (req, res, next) => {
+    const model_year = req.body.title;
+    const make = req.body.model_year;
+    const model = req.body.model;
+    const color = req.body.color;
+    const miles = req.body.miles;
+    const transmission = req.body.transmission;
+    const layout = req.body.layout;
+    const engine_config = req.body.engine_config;
+    const car = new Car(
+        null, model_year, make, model, 
+        color, miles, transmission, layout, engine_config
+        )
+    car
+        .save()
+        .then(() => {
+            res.redirect('/');
+        })
+        .catch(err => console.log(err))
+}
