@@ -10,9 +10,16 @@
         >
             <div class="mb-3 form-control">
                 <label for="model_year">Model Year</label>
+                
                 <select name="model_year" id="model_year" class="form-select">
                     <option selected="selected">Select a year for the vehicle</option>
+                    <% for( i = 1901; i <= new Date().getFullYear(); i++ ) {%>
+                        <option value="<%= i %>">
+                            <%= i %>
+                        </option>
+                    <% } %>
                 </select>
+
             </div>
             <div class="mb-3 form-control">
                 <label for=""></label>

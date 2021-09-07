@@ -48,7 +48,8 @@ exports.getAddVehicle = (req, res, next) => {
     res.render('admin/edit-vehicle', {
         pageTitle: 'Add Vehicle',
         path: '/admin/add-vehicle',
-        editing: false //used by edit-vehicle template to determine its use
+        editing: false, //used by edit-vehicle template to determine its use
+        
     })
 }
 
