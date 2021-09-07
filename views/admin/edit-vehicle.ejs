@@ -2,9 +2,38 @@
 </head>
 <body>
     <%- include('../includes/nav.ejs') %>
+    <h1>Add a vehicle</h1>
     <main class="container">
-        <form>
-         
+        <form 
+            class="vehicle-form" 
+            action="/admin/<% if (editing) { %>edit-vehicle<% } else { %>add-vehicle<% } %>" method="POST"
+        >
+            <div class="mb-3 form-control">
+                <label for="model_year">Model Year</label>
+                <select name="model_year" id="model_year" class="form-select">
+                    <option selected="selected">Select a year for the vehicle</option>
+                </select>
+            </div>
+            <div class="mb-3 form-control">
+                <label for=""></label>
+            </div>
+            <div class="mb-3 form-control">
+                <label for=""></label>
+            </div>
+            <div class="mb-3 form-control">
+                <label for=""></label>
+            </div>
+            <div class="mb-3 form-control">
+                <label for=""></label>
+            </div>
+            <div class="mb-3 form-control">
+                <label for=""></label>
+            </div>
+            <div class="mb-3 form-control">
+                <label for=""></label>
+            </div> 
+
+
         </form
     </main>
     <%- include('../includes/end.ejs') %>
