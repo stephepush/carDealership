@@ -11,14 +11,14 @@ const adminController = require('../controllers/admin')
 const router = new Router()
 
 
-router.get('/add-car', (req, res, next) => {
-    res.send()
-})
+
 
 //route for VIEWING ALL vehicles
 router.get('/vehicles', adminController.getVehicles);
 
 //routes for adding, editing and deleting vehicles:
+router.get('/add-vehicle', adminController.getAddVehicle);
+
 router.post('/add-vehicle', adminController.postAddVehicle);
 
 router.get('/edit-vehicle/:vehicleId', adminController.getEditVehicle);
