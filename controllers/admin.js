@@ -1,5 +1,6 @@
 const { response } = require('express');
 const Car = require('../models/car');
+let { makes } = require("../data/makes");
 
 /* exports.getVehicles = (req, res, next) => {
     Car.fetchAll(cars => {
@@ -49,7 +50,7 @@ exports.getAddVehicle = (req, res, next) => {
         pageTitle: 'Add Vehicle',
         path: '/admin/add-vehicle',
         editing: false, //used by edit-vehicle template to determine its use
-        
+        makesArray: makes
     })
 }
 

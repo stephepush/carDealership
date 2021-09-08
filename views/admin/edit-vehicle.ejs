@@ -13,7 +13,7 @@
                 
                 <select name="model_year" id="model_year" class="form-select">
                     <option selected="selected">Select a year for the vehicle:</option>
-                    <% for( i = 1901; i <= new Date().getFullYear(); i++ ) {%>
+                    <% for( let i = 1901; i <= new Date().getFullYear(); i++ ) {%>
                         <option value="<%= i %>">
                             <%= i %>
                         </option>
@@ -22,7 +22,15 @@
 
             </div>
             <div class="mb-3 form-control">
-                <label for=""></label>
+                <label for="make">Vehicle Manufacturer</label>
+                <select name="model_year" id="model_year" class="form-select">
+                    <option selected="selected">Select A Manufacturer for the vehicle:</option>
+                    <% for( let i = 0; i <= makesArray.length ; i++ ) {%>
+                        <option value="<%= makesArray[i] %>">
+                            <%= makesArray[i] %>
+                        </option>
+                    <%} %>
+                </select>
             </div>
             <div class="mb-3 form-control">
                 <label for=""></label>

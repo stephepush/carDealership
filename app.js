@@ -23,7 +23,8 @@ app.set('views', 'views');
         return years;
     }; */
 
-console.log(app.locals.modelYearRange(1901))
+//app.locals.makesArray = require("./data/makes.js");
+
 
 app.use('/admin', adminRoutes);
 app.use(lotRoutes);
