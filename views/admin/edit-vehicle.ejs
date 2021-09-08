@@ -23,7 +23,7 @@
             </div>
             <div class="mb-3 form-control">
                 <label for="make">Vehicle Manufacturer</label>
-                <select name="model_year" id="model_year" class="form-select">
+                <select name="make" id="make" class="form-select">
                     <option selected="selected">Select A Manufacturer for the vehicle:</option>
                     <% for( let i = 0; i <= makesArray.length ; i++ ) {%>
                         <option value="<%= makesArray[i] %>">
@@ -32,22 +32,75 @@
                     <%} %>
                 </select>
             </div>
-            <div class="mb-3 form-control">
-                <label for=""></label>
+            <div class="mb-3 form-control input-group">
+                <label for="model">Model</label>
+                <input type="text" id="model">
             </div>
             <div class="mb-3 form-control">
-                <label for=""></label>
+                <label for="color">Vehicle Color</label>
+            </div>
+            <div class="mb-3 form-control input-group">
+                <label for="miles">Miles</label>
+                <input type="number" id="miles">
             </div>
             <div class="mb-3 form-control">
-                <label for=""></label>
+                <label for="transmission">Transmission Type</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="transmission-type" id="automatic" checked value="automatic">
+                    <label class="form-check-label" for="automatic">
+                        Automatic Transmission
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="transmission-type" id="manual" value="manual>
+                    <label class="form-check-label" for="manual">
+                        Manual Transmission
+                    </label>
+                </div>
             </div>
             <div class="mb-3 form-control">
-                <label for=""></label>
-            </div>
-            <div class="mb-3 form-control">
-                <label for=""></label>
+                <label for="layout">Car Layout</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="car-layout1" id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        Front-engine, Front-wheel drive (FF)
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="car-layout2" id="flexRadioDefault2" >
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        Front-Engine, Rear-wheel drive  (FR)
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="car-layout3" id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        Rear-Engine, Rear-wheel drive (RR)
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="car-layout4" id="flexRadioDefault2">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        Mid-Engine, Rear-wheel drive (MR)
+                    </label>
+                </div>
+                                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="car-layout3" id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        Four-Wheel Drive (4WD)
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="car-layout4" id="flexRadioDefault2">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        All Wheel Drive AKA Full Time Four-Wheel Drive (AWD)
+                    </label>
+                </div>
             </div> 
 
+            <button class="btn btn-primary" type="submit">
+                <% if (editing) { %>Update Vehicle<% } else { %>Add Vehicle<% } %>
+            </button>
 
         </form
     </main>

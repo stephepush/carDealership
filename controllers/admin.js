@@ -55,8 +55,8 @@ exports.getAddVehicle = (req, res, next) => {
 }
 
 exports.postAddVehicle = (req, res, next) => {
-    const model_year = req.body.title;
-    const make = req.body.model_year;
+    const model_year = req.body.model_year;
+    const make = req.body.make;
     const model = req.body.model;
     const color = req.body.color;
     const miles = req.body.miles;
