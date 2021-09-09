@@ -39,6 +39,14 @@
             </div>
             <div class="mb-3 form-control">
                 <label for="color">Vehicle Color</label>
+                <select name="color" id="color" class="form-select">
+                    <option selected="selected">What color is the vehicle?</option>
+                    <% for( let i = 0; i <= colorsArray.length ; i++ ) {%>
+                        <option value="<%= colorsArray[i] %>">
+                            <%= colorsArray[i] %>
+                        </option>
+                    <%} %>
+                </select>
             </div>
             <div class="mb-3 form-control input-group">
                 <label for="miles">Miles</label>
