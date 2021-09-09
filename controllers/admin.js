@@ -80,11 +80,16 @@ exports.getEditVehicle = (req, res, next) =>{
     if (!editMode) {
         return res.redirect('/');
     }
-    res.render('admin/edit-vehicle', {
+    const carId = req.params.carId
+    Car.findById(carId, car =>{
+        res.render('admin/edit-vehicle', {
         pageTitle: 'Edit Vehicle',
         path: '/admin/edit-vehicle',
-        editing: editMode
+        editing: editMode,
+        car: car
+    }) 
     })
+
 }
 
 exports.postEditVehicle = (req, res, next) => {}

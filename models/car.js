@@ -61,6 +61,10 @@ module.exports = class Car {
             return db.query(options)
         }
 
+        static findById(id) {
+            return db.execute('SELECT * FROM products WHERE products.id = ?', [id]);
+        }
+
         save() {
             return db.execute(
                 'INSERT INTO cars (model_year, make, model, miles, color, transmission, layout, engine_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
@@ -132,7 +136,7 @@ module.exports = class Car {
             
         } */
 
-/*         static findById(id) {
+/*      static findById(id) {
             //return db.execute('SELECT * FROM products WHERE products.id = ?', [id]);
         } */
 }
