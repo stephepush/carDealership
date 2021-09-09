@@ -2,7 +2,8 @@
 </head>
 <body>
     <%- include('../includes/nav.ejs') %>
-    <h1>Add a vehicle</h1>
+    <h1><%if (!editing) { %>Add a vehicle <% } else { %>Edit Vehicle<% } %></h1>
+    
     <main class="container">
         <form 
             class="vehicle-form" 
@@ -85,19 +86,19 @@
                     </label>
                 </div>
                                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="car-layout3" id="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="car-layout5" id="flexRadioDefault1">
                     <label class="form-check-label" for="flexRadioDefault1">
                         Four-Wheel Drive (4WD)
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="car-layout4" id="flexRadioDefault2">
+                    <input class="form-check-input" type="radio" name="car-layout6" id="flexRadioDefault2">
                     <label class="form-check-label" for="flexRadioDefault2">
                         All Wheel Drive AKA Full Time Four-Wheel Drive (AWD)
                     </label>
                 </div>
             </div> 
-
+<%# Still needs engine config (button radios or selector) and color (selector?) %>
             <button class="btn btn-primary" type="submit">
                 <% if (editing) { %>Update Vehicle<% } else { %>Add Vehicle<% } %>
             </button>
