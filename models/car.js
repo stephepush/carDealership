@@ -66,17 +66,19 @@ module.exports = class Car {
         }
 
         save() {
-            return db.execute(
-                'INSERT INTO cars (model_year, make, model, miles, color, transmission, layout, engine_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+            console.log("hi")
+            //console.log(car)
+/*             return db.execute(
+                'INSERT INTO cars (model_year, make, model, color, miles, transmission, layout, engine_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
                 [this.model_year, 
                     this.make, 
                     this.model, 
-                    this.miles, 
                     this.color,
+                    this.miles,
                     this.transmission,
                     this.layout,
                     this.engine_type]
-            )
+            ) */
         }
 
         static deleteById(id) {}

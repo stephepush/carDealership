@@ -19,7 +19,7 @@ router.get('/vehicles', adminController.getVehicles);
 //routes for adding, editing and deleting vehicles:
 router.get('/add-vehicle', adminController.getAddVehicle);
 
-// router.post('/add-vehicle', adminController.postAddVehicle);
+router.post('/add-vehicle', adminController.postAddVehicle);
 
 //router.get('/edit-vehicle/:vehicleId', adminController.getEditVehicle);
 

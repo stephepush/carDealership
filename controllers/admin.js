@@ -65,16 +65,19 @@ exports.postAddVehicle = (req, res, next) => {
     const transmission = req.body.transmission;
     const layout = req.body.layout;
     const engine_config = req.body.engine_config;
+    const car_photo_url = null;
+    const car_price = null;
     const car = new Car(
         null, model_year, make, model, 
         color, miles, transmission, layout, engine_config
         )
-    car
+        console.log(car)
+/*     car
         .save()
         .then(() => {
             res.redirect('/');
         })
-        .catch(err => console.log(err))
+        .catch(err => console.log(err)) */
 }
 
 exports.getEditVehicle = (req, res, next) =>{
