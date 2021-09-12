@@ -14,7 +14,7 @@
                 
                 <select name="model_year" id="model_year" class="form-select">
                     <option selected="selected">Select a year for the vehicle:</option>
-                    <% for( let i = 1901; i <= new Date().getFullYear(); i++ ) {%>
+                    <% for( let i = new Date().getFullYear(); i >= 1901 ; i-- ) {%>
                         <option value="<%= i %>">
                             <%= i %>
                         </option>
@@ -130,7 +130,7 @@
                 </div>
             </div>
             <div>
-            
+
             </div>
 <%# Still needs engine config (button radios or selector) and color (selector?) %>
             <button class="btn btn-primary" type="submit">
