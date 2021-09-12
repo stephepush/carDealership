@@ -1,4 +1,4 @@
-exports.engines = [
+[
     {
         "config":"straight 3",
         "alias": "", 
