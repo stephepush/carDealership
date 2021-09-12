@@ -21,7 +21,7 @@ router.get('/add-vehicle', adminController.getAddVehicle);
 
 router.post('/add-vehicle', adminController.postAddVehicle);
 
-//router.get('/edit-vehicle/:vehicleId', adminController.getEditVehicle);
+router.get('/edit-vehicle/:vehicleId', adminController.getEditVehicle);
 
 router.post('/edit-vehicle', adminController.postEditVehicle);
 

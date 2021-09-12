@@ -87,12 +87,12 @@ exports.getEditVehicle = (req, res, next) =>{
     }
     const carId = req.params.carId
     Car.findById(carId, car =>{
-        res.render('admin/edit-vehicle', {
-        pageTitle: 'Edit Vehicle',
-        path: '/admin/edit-vehicle',
-        editing: editMode,
-        car: car
-    }) 
+            res.render('admin/edit-vehicle', {
+            pageTitle: 'Edit Vehicle',
+            path: '/admin/edit-vehicle',
+            editing: editMode,
+            car: car
+        })
     })
 
 }
