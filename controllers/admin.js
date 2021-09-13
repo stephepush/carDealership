@@ -2,6 +2,7 @@ const { response } = require('express');
 const Car = require('../models/car');
 const { makes } = require("../data/makes");
 const { colors } = require('../data/colors');
+const engines  = require('../data/engines.json')
 
 /* exports.getVehicles = (req, res, next) => {
     Car.fetchAll(cars => {
@@ -52,7 +53,9 @@ exports.getAddVehicle = (req, res, next) => {
         path: '/admin/add-vehicle',
         editing: false, //used by edit-vehicle template to determine its use
         makesArray: makes,
-        colorsArray: colors
+        colorsArray: colors,
+        enginesData: engines,
+        
     })
 }
 

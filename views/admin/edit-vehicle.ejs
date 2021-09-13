@@ -130,7 +130,16 @@
                 </div>
             </div>
             <div>
-
+                <label for="engine_config">Engine Configuration</label>
+                <select name="engine_config" id="engine_config" class="form-select">
+                    <option selected="selected">Select An Engine Configuration:</option>
+                
+                    <% enginesData.forEach(function (arrayItem) {%>
+                        <option value="<%= arrayItem.config %>">
+                            <%= arrayItem.config %>
+                        </option>
+                    <%}); %>
+                </select>
             </div>
 <%# Still needs engine config (button radios or selector) and color (selector?) %>
             <button class="btn btn-primary" type="submit">
