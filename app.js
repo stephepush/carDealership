@@ -1,6 +1,6 @@
 const path = require('path');
 //const bodyParser = require('body-parser');
-
+const metadata = require('reflect-metadata');
 const express = require('express');
 //const mountRoutes = require('./routes')
 
