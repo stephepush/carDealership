@@ -66,7 +66,7 @@ module.exports = class Car {
         }
 
         save() {
-            console.log("hi")
+
             //console.log(car)
 /*             return db.execute(
                 'INSERT INTO cars (model_year, make, model, color, miles, transmission, layout, engine_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',

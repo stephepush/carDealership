@@ -72,8 +72,8 @@ exports.postAddVehicle = (req, res, next) => {
     const car_price = null;
     const car = new Car(
         null, model_year, make, model, 
-        color, miles, transmission, layout, engine_config
-        )
+        color, miles, transmission, layout, engine_config,
+        null, null)
         console.log(car)
 /*     car
         .save()
