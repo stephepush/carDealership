@@ -2,7 +2,8 @@ const { response } = require('express');
 const Car = require('../models/car');
 const { makes } = require("../data/makes");
 const { colors } = require('../data/colors');
-const engines  = require('../data/engines.json')
+const engines  = require('../data/engines.json');
+
 
 /* exports.getVehicles = (req, res, next) => {
     Car.fetchAll(cars => {
@@ -60,27 +61,28 @@ exports.getAddVehicle = (req, res, next) => {
 }
 
 exports.postAddVehicle = (req, res, next) => {
+    //const id = null;
     const model_year = req.body.model_year;
     const make = req.body.make;
     const model = req.body.model;
-    const color = req.body.color;
     const miles = req.body.miles;
+    const color = req.body.color;
     const transmission = req.body.transmission;
     const layout = req.body.layout;
-    const engine_config = req.body.engine_config;
-    const car_photo_url = null;
-    const car_price = null;
+    const engine_type = req.body.engine_config;
+    //const car_photo_url = null;
+    //const car_price = null;
     const car = new Car(
         null, model_year, make, model, 
-        color, miles, transmission, layout, engine_config,
-        null, null)
-        console.log(car)
-/*     car
+        miles, color, transmission, layout, engine_type,
+        null, null);
+        console.log(car);
+    car
         .save()
         .then(() => {
             res.redirect('/');
         })
-        .catch(err => console.log(err)) */
+        .catch(err => console.log(err))
 }
 
 exports.getEditVehicle = (req, res, next) =>{

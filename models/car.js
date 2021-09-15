@@ -18,7 +18,7 @@ const  db = require('./database');
 module.exports = class Car {
     constructor( 
         id, model_year, make, model, miles,
-        color, transmission, layout, engine_config, car_photo_url, car_price ) {
+        color, transmission, layout, engine_type, car_photo_url, car_price ) {
             this.id = id;
             this.model_year = model_year;
             this.make = make;
@@ -27,7 +27,7 @@ module.exports = class Car {
             this.color = color;
             this.transmission = transmission;
             this.layout = layout;
-            this.engine_config = engine_config;
+            this.engine_type = engine_type;
             this.car_photo_url = car_photo_url;
             this.car_price = car_price
         }
@@ -66,19 +66,21 @@ module.exports = class Car {
         }
 
         save() {
-
-            //console.log(car)
-/*             return db.execute(
+            console.log("hi")
+            
+            return db.execute(
                 'INSERT INTO cars (model_year, make, model, color, miles, transmission, layout, engine_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
-                [this.model_year, 
+                [
+                    this.model_year, 
                     this.make, 
                     this.model, 
                     this.color,
                     this.miles,
                     this.transmission,
                     this.layout,
-                    this.engine_type]
-            ) */
+                    this.engine_type
+                ]
+            )
         }
 
         static deleteById(id) {}
