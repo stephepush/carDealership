@@ -1,3 +1,4 @@
+//const Connection = require('mysql2/typings/mysql/lib/Connection');
 const  db = require('./database');
 //import { conn } from './database';
 
@@ -84,6 +85,31 @@ module.exports = class Car {
                 ]
             )
         } */
+
+        save() {
+            db.getConnection()
+                .then((db) => {
+                    return db.query('START TRANSACTION');                    
+                })
+                .then(() => {
+                    db.query('INSERT INTO cars (model_year, make, model, color, miles, transmission, layout, engine_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+                    [this.model_year, this.make, this.model, this.color,this.miles, this.transmission, this.layout, this.engine_type])
+                })
+                .then(() => {
+                    db.query('INSERT INTO car_photos (car_photo_url) VALUES (?)',
+                    [this.car_photo_url])
+                })
+                .then(() => {db.query('INSERT INTO car_price (car_price) VALUES (?)', [this.car_price])
+                })
+                .then(() => {db.query('INSERT INTO sales_status (sale_status, for_sale) VALUES (?, ?)', [this.sale_status, this.for_sale])
+                })
+                .then(() => {
+                    return Connection.query('COMMIT');
+                })
+                .catch((error) => {
+                    return Connection.query('ROLLBACK');
+                })
+        }
 
         static deleteById(id) {}
 
