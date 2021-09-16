@@ -62,6 +62,7 @@ exports.getAddVehicle = (req, res, next) => {
 
 exports.postAddVehicle = (req, res, next) => {
     //const id = null;
+    //car table
     const model_year = req.body.model_year;
     const make = req.body.make;
     const model = req.body.model;
@@ -70,8 +71,11 @@ exports.postAddVehicle = (req, res, next) => {
     const transmission = req.body.transmission;
     const layout = req.body.layout;
     const engine_type = req.body.engine_config;
+    //photo table
     const car_photo_url = req.body.engine_config;
+    //car_price table
     const car_price = req.body.car_price;
+    //car sales_status table
     const sale_status = req.body.sale_status;
     const for_sale = req.body.for_sale;
     const car = new Car(

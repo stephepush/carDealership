@@ -67,7 +67,7 @@ module.exports = class Car {
             return db.execute('SELECT * FROM products WHERE products.id = ?', [id]);
         }
 
-        save() {
+/*         save() {
             console.log("hi")
             
             return db.execute(
@@ -83,7 +83,7 @@ module.exports = class Car {
                     this.engine_type
                 ]
             )
-        }
+        } */
 
         static deleteById(id) {}
 
