@@ -78,6 +78,8 @@ exports.postAddVehicle = (req, res, next) => {
     //car sales_status table
     const sale_status = req.body.sale_status;
     const for_sale = req.body.for_sale;
+    //const for_sale = parseInt(req.body.for_sale);
+    //const for_sale = Boolean(parseInt(req.body.for_sale));
     const car = new Car(
         null, model_year, make, model, 
         miles, color, transmission, layout, engine_type,
