@@ -104,10 +104,10 @@ module.exports = class Car {
                 .then(() => {db.query('INSERT INTO sales_status (sale_status, for_sale) VALUES (?, ?)', [this.sale_status, this.for_sale])
                 })
                 .then(() => {
-                    return Connection.query('COMMIT');
+                    return db.query('COMMIT');
                 })
                 .catch((error) => {
-                    return Connection.query('ROLLBACK');
+                    return db.query('ROLLBACK');
                 })
         }
 
