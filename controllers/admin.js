@@ -72,7 +72,7 @@ exports.postAddVehicle = (req, res, next) => {
     const layout = req.body.layout;
     const engine_type = req.body.engine_config;
     //photo table
-    const car_photo_url = req.body.engine_config;
+    const car_photo_url = req.body.car_photo_url;
     //car_price table
     const car_price = req.body.car_price;
     //car sales_status table
