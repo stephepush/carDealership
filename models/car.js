@@ -29,7 +29,9 @@ module.exports = class Car {
             this.layout = layout;
             this.engine_type = engine_type;
             this.car_photo_url = car_photo_url;
-            this.car_price = car_price
+            this.car_price = car_price;
+            this.sale_status = sale_status;
+            this.for_sale = for_sale;
         }
 
 
