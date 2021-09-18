@@ -19,7 +19,7 @@ const  db = require('./database');
 module.exports = class Car {
     constructor( 
         id, model_year, make, model, miles,
-        color, transmission, layout, engine_type, car_photo_url, car_price ) {
+        color, transmission, layout, engine_type, car_photo_url, car_price, sale_status, for_sale ) {
             this.id = id;
             this.model_year = model_year;
             this.make = make;

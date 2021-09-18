@@ -2,6 +2,7 @@ const { response } = require('express');
 const Car = require('../models/car');
 const { makes } = require("../data/makes");
 const { colors } = require('../data/colors');
+const { sale_status, salesStatus } = require('../data/saleStatus')
 const engines  = require('../data/engines.json');
 
 
@@ -55,7 +56,8 @@ exports.getAddVehicle = (req, res, next) => {
         editing: false, //used by edit-vehicle template to determine its use
         makesArray: makes,
         colorsArray: colors,
-        enginesData: engines,
+        sale_status: salesStatus,
+        enginesData: engines
         
     })
 }

@@ -131,6 +131,17 @@
                     <%}); %>
                 </select>
             </div>
+            <div class="mb-3 form-control">
+                <label for="sale_status">Car Sale Status</label>
+                <select name="sale_status" id="sale_status" class="form-select">
+                    <option selected="selected">What is the sales status of this vehicle?</option>
+                    <% for( let i = 0; i <= sale_status.length ; i++ ) {%>
+                        <option value="<%= sale_status[i] %>">
+                            <%= sale_status[i] %>
+                        </option>
+                    <%} %>
+                </select>
+            </div>
                 <div class="mb-3 form-control">
                 <label for="for_sale">For Sale?</label>
                 <div class="form-check">
