@@ -6,33 +6,6 @@ const { sale_status, salesStatus } = require('../data/saleStatus')
 const engines  = require('../data/engines.json');
 
 
-/* exports.getVehicles = (req, res, next) => {
-    Car.fetchAll(cars => {
-        res.render('admin/vehicles', {
-            cars: cars,
-            pageTitle: 'Dealer Admin Page',
-            path: '/admin/vehicles'
-        });
-    })
-   
-} */
-
-/* exports.getVehicles = (req, res, next) => {
-    Car.fetchAll()
-        .then((rows) => {
-            console.log(rows[0]);
-            
-            res.render('admin/vehicles', {
-                cars: rows[0],
-                pageTitle: 'Dealer Admin Page',
-                path: '/admin/vehicles',
-                
-            }); 
-            
-        })
-        .catch(err => console.log(err));
-} */
-
 exports.getVehicles = (req, res, next) => {
     Car.fetchAll()
         .then((rows) => {
@@ -47,6 +20,18 @@ exports.getVehicles = (req, res, next) => {
             
         })
         .catch(err => console.log(err));
+}
+
+exports.getVehicle = (req, res, next) => {
+    const vehicleId = req.params.vehicleId;
+    Car.findById(car_id)
+        .then(([car_id]) => {
+            res.render('lot/vehicle-detail', {
+                vehicle: car[0],
+                pageTitle: `Express Autos: ${car.model_year} + ${car.make} ${car.model}`,
+                path: 'lot/vehicle-detail'
+            })
+        })
 }
 
 exports.getAddVehicle = (req, res, next) => {
