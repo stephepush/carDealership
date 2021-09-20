@@ -5,8 +5,8 @@ const pool = mysql.createPool({
   host: 'localhost', 
   user: 'admin', 
   password: 'hello',
-  database: 'express_autos'
-
+  database: 'express_autos',
+  //multipleStatements: true
 })
 /* 
 pool.connect(function(error){

@@ -87,21 +87,36 @@ module.exports = class Car {
         } */
 
         save() {
-            db.getConnection()
+            let pk;
+            
+            return db.getConnection()
+            
                 .then((db) => {
                     return db.query('START TRANSACTION');                    
                 })
                 .then(() => {
-                    db.query('INSERT INTO cars (model_year, make, model, color, miles, transmission, layout, engine_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
-                    [this.model_year, this.make, this.model, this.color,this.miles, this.transmission, this.layout, this.engine_type])
+                    const car_insert = db.query('INSERT INTO cars (model_year, make, model, color, miles, transmission, layout, engine_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+                    [this.model_year, this.make, this.model, this.color,this.miles, this.transmission, this.layout, this.engine_type]);
+                    return car_insert
+                    ;
+                    
+                    
                 })
+                 .then((car_insert) => {
+                    console.log(Object.entries(car_insert));
+                    console.log(car_insert[0]);
+                    console.log(car_insert[0]['insertId'])
+                    pk = car_insert[0]['insertId']
+                }) 
+                /*.then(() => console.log(pk)) */
                 .then(() => {
-                    db.query('INSERT INTO car_photos (car_photo_url) VALUES (?)',
-                    [this.car_photo_url])
+                    //console.log(pk)
+                    db.query('INSERT INTO car_photos (car_id, car_photo_url) VALUES (?,?)',
+                    [pk, this.car_photo_url])
                 })
-                .then(() => {db.query('INSERT INTO car_price (car_price) VALUES (?)', [this.car_price])
+                .then(() => {db.query('INSERT INTO car_prices (car_id, car_price) VALUES (?, ?)', [pk, this.car_price])
                 })
-                .then(() => {db.query('INSERT INTO sales_status (sale_status, for_sale) VALUES (?, ?)', [this.sale_status, this.for_sale])
+                .then(() => {db.query('INSERT INTO sales_status (car_id, sale_status, for_sale) VALUES (?, ?, ?)', [pk, this.sale_status, this.for_sale])
                 })
                 .then(() => {
                     return db.query('COMMIT');
