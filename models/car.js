@@ -33,7 +33,7 @@ module.exports = class Car {
         }
 
         static findById(id) {
-            return db.execute('SELECT * FROM products WHERE products.id = ?', [id]);
+            return db.execute('SELECT * FROM cars WHERE car_id = ?', [id]);
         }
 
         save() {
@@ -46,7 +46,7 @@ module.exports = class Car {
                 })
                 .then(() => {
                     const car_insert = db.query('INSERT INTO cars (model_year, make, model, color, miles, transmission, layout, engine_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
-                    [this.model_year, this.make, this.model, this.color,this.miles, this.transmission, this.layout, this.engine_type]);
+                    [this.model_year, this.make, this.model, this.color, this.miles, this.transmission, this.layout, this.engine_type]);
                     return car_insert;
                 })
                  .then((car_insert) => {

@@ -23,12 +23,12 @@ exports.getVehicles = (req, res, next) => {
 }
 
 exports.getVehicle = (req, res, next) => {
-    const vehicleId = req.params.vehicleId;
-    Car.findById(car_id)
-        .then(([car_id]) => {
+    const carId = req.params.vehicleId;
+    Car.findById(carId)
+        .then(([carId]) => {
             res.render('lot/vehicle-detail', {
                 vehicle: car[0],
-                pageTitle: `Express Autos: ${car.model_year} + ${car.make} ${car.model}`,
+                //pageTitle: `Express Autos: ${car.model_year} + ${car.make} ${car.model}`,
                 path: 'lot/vehicle-detail'
             })
         })
@@ -85,14 +85,24 @@ exports.getEditVehicle = (req, res, next) =>{
     if (!editMode) {
         return res.redirect('/');
     }
-    const carId = req.params.carId
-    Car.findById(carId, car =>{
+    const carId = req.params.vehicleId
+    //console.log(carId)
+    Car.findById(carId)
+        .then(car =>{
+            if (!car) {
+                return res.redirect('/');
+            }
+            console.log(car[0][0])
             res.render('admin/edit-vehicle', {
-            pageTitle: 'Edit Vehicle',
-            path: '/admin/edit-vehicle',
-            editing: editMode,
-            car: car
-        })
+                pageTitle: 'Edit Vehicle',
+                path: '/admin/edit-vehicle',
+                editing: editMode,
+                makesArray: makes,
+                colorsArray: colors,
+                sale_status: salesStatus,
+                enginesData: engines,
+                car: car[0][0]
+            })
     })
 
 }
