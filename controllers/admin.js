@@ -101,10 +101,12 @@ exports.getEditVehicle = (req, res, next) =>{
                 colorsArray: colors,
                 sale_status: salesStatus,
                 enginesData: engines,
-                car: car[0][0]
+                car: car[0][0],
+                
             })
+
         })
-        .catch(err => console.log(err))
+        //.catch(err => console.log(err))
 
 }
 

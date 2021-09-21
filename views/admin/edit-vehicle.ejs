@@ -13,10 +13,10 @@
                 <label for="model_year">Model Year</label>
                 
                 <select name="model_year" id="model_year" class="form-select">
-                    <option selected="selected">Select a year for the vehicle:</option>
+                    <option selected hidden><% if (editing) { %><%= car.model_year %><%} else {%><%= 'Select a year for the vehicle:' %><%}%></option>
                     <% for( let i = new Date().getFullYear(); i >= 1901 ; i-- ) {%>
                         <option value="<%= i %>">
-                            <%= i %>
+                            <%=  i %>
                         </option>
                     <% } %>
                 </select>
