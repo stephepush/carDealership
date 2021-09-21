@@ -103,7 +103,8 @@ exports.getEditVehicle = (req, res, next) =>{
                 enginesData: engines,
                 car: car[0][0]
             })
-    })
+        })
+        .catch(err => console.log(err))
 
 }
 
