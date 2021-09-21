@@ -25,7 +25,7 @@
             <div class="mb-3 form-control">
                 <label for="make">Vehicle Manufacturer</label>
                 <select name="make" id="make" class="form-select">
-                    <option selected="selected">Select A Manufacturer for the vehicle:</option>
+                    <option selected hidden><% if (editing) { %><%= car.make %><%} else {%><%= 'Select A Manufacturer for the vehicle:' %><%}%></option>
                     <% for( let i = 0; i <= makesArray.length ; i++ ) {%>
                         <option value="<%= makesArray[i] %>">
                             <%= makesArray[i] %>
@@ -35,28 +35,28 @@
             </div>
             <div class="mb-3 form-control input-group">
                 <label for="model">Model</label>
-                <input type="text" id="model" name="model">
+                <input type="text" id="model" name="model" value="<% if (editing) { %><%= car.model %><% } %>">
             </div>
 
             <div class="mb-3 form-control input-group">
                 <label for="miles">Miles</label>
-                <input type="number" id="miles" name="miles">
+                <input type="number" id="miles" name="miles" value="<% if (editing) { %><%= car.miles %><% } %>">
             </div>
 
             <div class="mb-3 form-control input-group">
                 <label for="car_price">Car Price</label>
-                <input type="number" id="car_price" name="car_price">
+                <input type="number" id="car_price" name="car_price" value="<% if (editing) { %><%= car.price %><% } %>">
             </div>
 
             <div class="mb-3 form-control input-group">
                 <label for="car_photo_url">Vehicle Photo</label>
-                <input type="text" id="car_photo_url" name="car_photo_url">
+                <input type="url" id="car_photo_url" name="car_photo_url" required value="<% if (editing) { %><%= car.car_photo_url %><% } %>" >
             </div>
 
             <div class="mb-3 form-control input-group">
                 <label for="color">Vehicle Color</label>
                 <select name="color" id="color" class="form-select">
-                    <option selected="selected">What color is the vehicle?</option>
+                    <option selected hidden><% if (editing) { %><%= car.color %><%} else {%><%= `What is the vehicle's color?` %><%}%></option>
                     <% for( let i = 0; i <= colorsArray.length ; i++ ) {%>
                         <option value="<%= colorsArray[i] %>">
                             <%= colorsArray[i] %>
@@ -122,8 +122,7 @@
             <div>
                 <label for="engine_config">Engine Configuration</label>
                 <select name="engine_config" id="engine_config" class="form-select">
-                    <option selected="selected">Select An Engine Configuration:</option>
-                
+                    <option selected hidden><% if (editing) { %><%= car.engine_type %><%} else {%><%= `Please select and engine configuration` %><%}%></option>
                     <% enginesData.forEach(function (arrayItem) {%>
                         <option value="<%= arrayItem.config %>">
                             <%= arrayItem.config %>
@@ -134,7 +133,7 @@
             <div class="mb-3 form-control input-group">
                 <label for="sale_status">Car Sale Status</label>
                 <select name="sale_status" id="sale_status" class="form-select">
-                    <option selected="selected">What is the sales status of this vehicle?</option>
+                    <option selected hidden><% if (editing) { %><%= car.sale_status %><%} else {%><%= `What is the vehicles sale status` %><%}%></option>
                     <% for( let i = 0; i <= sale_status.length ; i++ ) {%>
                         <option value="<%= sale_status[i] %>">
                             <%= sale_status[i] %>
