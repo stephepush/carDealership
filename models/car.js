@@ -24,7 +24,7 @@ module.exports = class Car {
 
 
         static fetchAll () {
-            var options = {
+            const options = {
                 sql: 
                 "SELECT c.car_id, c.model_year, c.make,c.model, c.miles, c.color, c.transmission, c.layout, c.engine_type, p.car_id, p.car_photo_url FROM cars c INNER JOIN car_photos p ON c.car_id = p.car_id", 
                 nestTables: true
@@ -32,8 +32,27 @@ module.exports = class Car {
             return db.query(options)
         }
 
-        static findById(id) {
+/*         static findById(id) {
             return db.execute('SELECT * FROM cars WHERE car_id = ?', [id]);
+        } */
+
+        static findById(id) {
+            let options = 
+                    
+                        `SELECT 
+                            c.car_id, c.model_year, c.make, c.model, 
+                            c.miles, c.color, c.transmission, c.layout, 
+                            c.engine_type, p.car_id, p.car_photo_url,
+                            d.car_id, d.car_price, s.sale_status, s.for_sale
+
+                        FROM cars c
+                            INNER JOIN car_photos p ON c.car_id = p.car_id
+                            INNER JOIN car_prices d ON c.car_id = d.car_id
+                            INNER JOIN sales_status s ON c.car_id = s.car_id
+                        WHERE c.car_id = ?`;
+                    
+                
+                return db.query(options, id, {nestTables: true})
         }
 
         save() {

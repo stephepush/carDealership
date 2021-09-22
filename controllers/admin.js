@@ -92,7 +92,7 @@ exports.getEditVehicle = (req, res, next) =>{
             if (!car) {
                 return res.redirect('/');
             }
-            console.log(car[0][0])
+            console.log(car)
             res.render('admin/edit-vehicle', {
                 pageTitle: 'Edit Vehicle',
                 path: '/admin/edit-vehicle',
