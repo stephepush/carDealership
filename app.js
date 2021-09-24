@@ -14,6 +14,7 @@ const lotRoutes = require('./routes/lot');
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');
+
 /* app.locals.modelYearRange = function(startYear) {
         var currentYear = new Date().getFullYear(), years = [];
         startYear = startYear || 1980;
