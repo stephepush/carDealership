@@ -92,12 +92,12 @@ module.exports = class Car {
                 })
         }
 
-        static updateById(id) {
+        updateById(id) {
             let query = 
-                `UPDATE cars c, car_photos p, car_prices d, sales_status s
-                INNER JOIN car_photos p ON c.car_id = p.car_id
-                INNER JOIN car_prices d ON c.car_id = d.car_id
-                INNER JOIN sales_status s ON c.car_id = s.car_id
+                `UPDATE (cars c, car_photos p, car_prices d, sales_status s)
+                INNER JOIN car_photos ON (c.car_id = p.car_id)
+                INNER JOIN car_prices ON (c.car_id = d.car_id)
+                INNER JOIN sales_status ON (c.car_id = s.car_id)
                 
                 SET  
                 c.model_year = ?, 

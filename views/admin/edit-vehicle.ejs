@@ -45,7 +45,7 @@
 
             <div class="mb-3 form-control input-group">
                 <label for="car_price">Car Price</label>
-                <input type="number" id="car_price" name="car_price" value="<% if (editing) { %><%= car.price %><% } %>">
+                <input type="number" id="car_price" name="car_price" value="<% if (editing) { %><%= car.car_price %><% } %>">
             </div>
 
             <div class="mb-3 form-control input-group">
@@ -157,6 +157,10 @@
                 </div>
             </div>
 <%# Still needs engine config (button radios or selector) and color (selector?) %>
+
+            <% if (editing) { %>
+                <input type="hidden" value="<%= car.car_id %>" name="car_id">
+            <% } %>
             <button class="btn btn-primary" type="submit">
                 <% if (editing) { %>Update Vehicle<% } else { %>Add Vehicle<% } %>
             </button>
