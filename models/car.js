@@ -127,7 +127,7 @@ module.exports = class Car {
                             )
         }
 
-        /*static deleteById(id) {
+        static deleteById(id) {
             return db.query('DELETE FROM cars WHERE car_id = ?', [id])
-        }*/
+        }
 }
