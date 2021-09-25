@@ -2,7 +2,7 @@ const { response } = require('express');
 const Car = require('../models/car');
 const { makes } = require("../data/makes");
 const { colors } = require('../data/colors');
-const { sale_status, salesStatus } = require('../data/saleStatus')
+const { sale_status, salesStatus } = require('../data/saleStatus'); 
 const engines  = require('../data/engines.json');
 
 
@@ -110,6 +110,46 @@ exports.getEditVehicle = (req, res, next) =>{
 
 }
 
-exports.postEditVehicle = (req, res, next) => {}
+exports.postEditVehicle = (req, res, next) => {
+    const vehicle_id = req.body.car_id;
+    const updated_model_year = req.body.model_year;
+    const updated_make = req.body.make;
+    const updated_model = req.body.model;
+    const updated_miles = req.body.miles;
+    const updated_color = req.body.color;
+    const updated_transmission = req.body.transmission;
+    const updated_layout = req.body.layout;
+    const updated_engine_type = req.body.engine_config;
+    //photo table
+    const updated_car_photo_url = req.body.car_photo_url;
+    //car_price table
+    const updated_car_price = req.body.car_price;
+    //car sales_status table
+    const updated_sale_status = req.body.sale_status;
+    const updated_for_sale = req.body.for_sale;
+    //const for_sale = parseInt(req.body.for_sale);
+    //const for_sale = Boolean(parseInt(req.body.for_sale));
+    const car = new Car(
+        null, 
+        updated_model_year, 
+        updated_make, 
+        updated_model, 
+        updated_miles, 
+        updated_color, 
+        updated_transmission, 
+        updated_layout, 
+        updated_engine_type,
+        updated_car_photo_url, 
+        updated_car_price, 
+        updated_sale_status, 
+        updated_for_sale);
+        console.log(car);
+    car
+        .updateById(vehicle_id)
+        .then(() => {
+            res.redirect('/');
+        })
+        .catch(err => console.log(err))
+}
 
 exports.postDeleteVehicle = (req, res, next) => {}

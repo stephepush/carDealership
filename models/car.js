@@ -123,7 +123,7 @@ module.exports = class Car {
                                 this.layout, this.engine_type,
                                 this.car_photo_url, this.car_price,
                                 this.sale_status, this.for_sale, id
-                            ],
+                            ]
                             )
         }
 
