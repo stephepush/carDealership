@@ -152,4 +152,26 @@ exports.postEditVehicle = (req, res, next) => {
         .catch(err => console.log(err))
 }
 
-exports.postDeleteVehicle = (req, res, next) => {}
+exports.postDeleteVehicle = (req, res, next) => {
+    const carId = req.body.vehicleId
+    console.log(req.body)
+    Car.deleteById(carId)
+     .then(result => {
+        console.log(`
+                        Car ${carId} Deleted
+                    `);
+                    Car.fetchAll()
+                    .then((rows) => {
+                        console.log(rows[0]);
+                        
+                        res.render('admin/vehicles', {
+                            cars: rows[0],
+                            pageTitle: 'Dealer Admin Page',
+                            path: '/admin/vehicles',
+                            
+                        }); 
+                        
+                    })
+                    .catch(err => console.log(err));
+    })
+}

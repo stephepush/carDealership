@@ -13,11 +13,13 @@ const router = new Router()
 
 
 
-//route for VIEWING ALL vehicles
-router.get('/vehicles', adminController.getVehicles);
+
 
 //routes for adding, editing and deleting vehicles:
 router.get('/add-vehicle', adminController.getAddVehicle);
+
+//route for VIEWING ALL vehicles
+router.get('/vehicles', adminController.getVehicles);
 
 router.post('/add-vehicle', adminController.postAddVehicle);
 
@@ -25,7 +27,7 @@ router.get('/edit-vehicle/:vehicleId', adminController.getEditVehicle);
 
 router.post('/edit-vehicle', adminController.postEditVehicle);
 
-router.post('/delete-vehicle', adminController.postDeleteVehicle);
+router.post('/delete-vehicle/', adminController.postDeleteVehicle);
 
 
 module.exports = router;
