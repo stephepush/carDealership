@@ -13,6 +13,7 @@ router.get('/', (req, res, next) => {
     {   
         //prods: products, 
         pageTitle: 'Virtual Lot',
+        pageName: 'Lot'
     })
 })
 

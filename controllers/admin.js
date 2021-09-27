@@ -12,7 +12,8 @@ exports.getVehicles = (req, res, next) => {
             
             res.render('admin/vehicles', {
                 cars: rows[0],
-                pageTitle: 'Dealer Admin Page',
+                pageTitle: 'Dealer Lot',
+                pageName: 'admin_vehicles',
                 path: '/admin/vehicles',
                 
             }); 
@@ -28,7 +29,8 @@ exports.getVehicle = (req, res, next) => {
             res.render('lot/vehicle-detail', {
                 vehicle: car[0],
                 //pageTitle: `Express Autos: ${car.model_year} + ${car.make} ${car.model}`,
-                path: 'lot/vehicle-detail'
+                path: 'lot/vehicle-detail',
+                
             })
         })
 }
@@ -36,6 +38,7 @@ exports.getVehicle = (req, res, next) => {
 exports.getAddVehicle = (req, res, next) => {
     res.render('admin/edit-vehicle', {
         pageTitle: 'Add Vehicle',
+        pageName: 'add_vehicle',
         path: '/admin/add-vehicle',
         editing: false, //used by edit-vehicle template to determine its use
         makesArray: makes,
@@ -95,6 +98,7 @@ exports.getEditVehicle = (req, res, next) =>{
             res.render('admin/edit-vehicle', {
                 pageTitle: 'Edit Vehicle',
                 path: '/admin/edit-vehicle',
+                pageName: 'edit_vehicle',
                 editing: editMode,
                 makesArray: makes,
                 colorsArray: colors,
