@@ -35,7 +35,7 @@ app.use((req, res, next) => {
             './404', 
             { 
                 pageTitle: '404 Page',
-                editing: false
+                pageName: 'not_found',
             }
         )
 })
