@@ -1,194 +1,195 @@
 <%- include('../includes/head.ejs') %>
 </head>
+
 <body>
-    <%- include('../includes/nav.ejs') %>
-        <div class="p-5 text-center bg-light"">
-        <h1 class="mb-3"><%if (!editing) { %>Add a Vehicle <% } else { %>Edit Vehicle<% } %></h1>
-        <%/*<h4 class="mb-3">Enter The Car Info Here</h4>
-        <a class="btn btn-primary" href="" role="button">Call to action</a>*/%>
+  <%- include('../includes/nav.ejs') %>
+  <div class="p-5 text-center bg-image" style="
+            background-image: url('https://res.cloudinary.com/dmkct6wfu/image/upload/v1632775016/volkswagen-passat-cc-2009_au8phg.gif');
+            height: 400px;
+            ">
+    <div class="mask h-100" style="background-color: rgba(211, 211, 211, 0.8);">
+      <div class="d-flex justify-content-center align-items-center h-100">
+        <div class="text-black ">
+          <h1 class="fw-bold mb-3">Add A Vehicle</h1>
+          <%/*<h4 class="mb-3">Subheading</h4>
+                        <a class="btn btn-outline-light btn-lg" href="#!" role="button"
+                            >Call to action</a
+                        >*/%>
         </div>
-    </header>
+      </div>
+    </div>
+  </div>
+  </header>
 
-    
-    <main class="container">
-        <form 
-            class="vehicle-form" 
-            action="/admin/<% if (editing) { %>edit-vehicle<% } else { %>add-vehicle<% } %>" method="POST"
-        >
-            <div class=" form-control mb-3">
-                <label for="model_year">Model Year</label>
-                
-                <select name="model_year" id="model_year" class="form-select mb-3">
-                    <option selected hidden><% if (editing) { %><%= car.model_year %><%} else {%><%= 'Select a year for the vehicle:' %><%}%></option>
+
+  <main class="container">
+    <form class="vehicle-form" action="/admin/<% if (editing) { %>edit-vehicle<% } else { %>add-vehicle<% } %>" method="POST">
+      <div class=" form-control mb-3">
+        <label for="model_year">Model Year</label>
+
+        <select name="model_year" id="model_year" class="form-select mb-3">
+          <option selected hidden><% if (editing) { %><%= car.model_year %><%} else {%><%= 'Select a year for the vehicle:' %><%}%></option>
                     <% for( let i = new Date().getFullYear(); i >= 1901 ; i-- ) {%>
-                        <option value="<%= i %>">
-                            <%=  i %>
-                        </option>
-                    <% } %>
-                </select>
+          <option value="<%= i %>">
+            <%=  i %>
+          </option>
+          <% } %>
+        </select>
 
-            
-                <label for="make">Vehicle Manufacturer</label>
-                <select name="make" id="make" class="form-select mb-3">
-                    <option selected hidden><% if (editing) { %><%= car.make %><%} else {%><%= 'Select A Manufacturer for the vehicle:' %><%}%></option>
+
+        <label for="make">Vehicle Manufacturer</label>
+        <select name="make" id="make" class="form-select mb-3">
+          <option selected hidden><% if (editing) { %><%= car.make %><%} else {%><%= 'Select A Manufacturer for the vehicle:' %><%}%></option>
                     <% for( let i = 0; i <= makesArray.length ; i++ ) {%>
-                        <option value="<%= makesArray[i] %>">
-                            <%= makesArray[i] %>
-                        </option>
-                    <%} %>
-                </select>
-            
-                <label for="model" class="form-label">Model</label>
-                <div class="mb-3 input-group">
-                    
-                    <input type="text" id="model" name="model"  class="form-control" value="<% if (editing) { %><%= car.model %><% } %>">
-                </div>
-            
-                <label for="miles" class="form-label">Miles</label>
-                <div class="mb-3 input-group">
-                    
-                    <input type="number" id="miles" name="miles"  class="form-control" value="<% if (editing) { %><%= car.miles %><% } %>">
-                </div> 
+          <option value="<%= makesArray[i] %>">
+            <%= makesArray[i] %>
+          </option>
+          <%} %>
+        </select>
 
-                <label for="car_price" class="form-label">Car Price</label>
-                <div class="mb-3 input-group">
-                    
-                    <input type="number" id="car_price" name="car_price"  class="form-control" value="<% if (editing) { %><%= car.car_price %><% } %>">
-                </div>
-            
-                <label for="car_photo_url" class="form-label">Vehicle Photo</label>
-                <div class="mb-3 input-group">
-                    
-                    <input type="url" id="car_photo_url" name="car_photo_url" class="form-control" required value="<% if (editing) { %><%= car.car_photo_url %><% } %>" >
-                </div>
-                
-                <label for="color" class="form-label">Vehicle Color</label>
-                <div class="mb-3 input-group">
-                    
-                    <select name="color" id="color" class="form-select">
-                        <option selected hidden><% if (editing) { %><%= car.color %><%} else {%><%= `What is the vehicle's color?` %><%}%></option>
+        <label for="model" class="form-label">Model</label>
+        <div class="mb-3 input-group">
+
+          <input type="text" id="model" name="model" class="form-control" value="<% if (editing) { %><%= car.model %><% } %>">
+        </div>
+
+        <label for="miles" class="form-label">Miles</label>
+        <div class="mb-3 input-group">
+
+          <input type="number" id="miles" name="miles" class="form-control" value="<% if (editing) { %><%= car.miles %><% } %>">
+        </div>
+
+        <label for="car_price" class="form-label">Car Price</label>
+        <div class="mb-3 input-group">
+
+          <input type="number" id="car_price" name="car_price" class="form-control" value="<% if (editing) { %><%= car.car_price %><% } %>">
+        </div>
+
+        <label for="car_photo_url" class="form-label">Vehicle Photo</label>
+        <div class="mb-3 input-group">
+
+          <input type="url" id="car_photo_url" name="car_photo_url" class="form-control" required value="<% if (editing) { %><%= car.car_photo_url %><% } %>">
+        </div>
+
+        <label for="color" class="form-label">Vehicle Color</label>
+        <div class="mb-3 input-group">
+
+          <select name="color" id="color" class="form-select">
+            <option selected hidden><% if (editing) { %><%= car.color %><%} else {%><%= `What is the vehicle's color?` %><%}%></option>
                         <% for( let i = 0; i <= colorsArray.length ; i++ ) {%>
-                            <option value="<%= colorsArray[i] %>">
-                                <%= colorsArray[i] %>
-                            </option>
-                        <%} %>
-                    </select>
-                </div>
+            <option value="<%= colorsArray[i] %>">
+              <%= colorsArray[i] %>
+            </option>
+            <%} %>
+          </select>
+        </div>
 
-            <div class="mb-3">
-                <label for="layout">Car Layout</label>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="layout" value="FF" id="flexRadioDefault1">
-                    <label class="form-check-label" for="flexRadioDefault1">
-                        Front-engine, Front-wheel drive (FF)
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="layout" value="FR" id="flexRadioDefault2" >
-                    <label class="form-check-label" for="flexRadioDefault2">
-                        Front-Engine, Rear-wheel drive  (FR)
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="layout" value="RR"  id="flexRadioDefault1">
-                    <label class="form-check-label" for="flexRadioDefault3">
-                        Rear-Engine, Rear-wheel drive (RR)
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="layout" value="MR" id="flexRadioDefault2">
-                    <label class="form-check-label" for="flexRadioDefault4">
-                        Mid-Engine, Rear-wheel drive (MR)
-                    </label>
-                </div>
-                                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="layout" value="4WD"  id="flexRadioDefault1">
-                    <label class="form-check-label" for="flexRadioDefault5">
-                        Four-Wheel Drive (4WD)
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="layout" value="AWD"  id="flexRadioDefault2">
-                    <label class="form-check-label" for="flexRadioDefault6">
-                        All Wheel Drive AKA Full Time Four-Wheel Drive (AWD)
-                    </label>
-                </div>
-            </div>    
-           
-            <div class="mb-3">
-                <label for="transmission">Transmission Type</label>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="transmission" id="automatic" checked value="automatic">
-                    <label class="form-check-label" for="automatic">
-                        Automatic Transmission
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="transmission" id="manual" value="manual">
-                    <label class="form-check-label" for="manual">
-                        Manual Transmission
-                    </label>
-                </div>
-            </div>
+        <div class="mb-3">
+          <label for="layout">Car Layout</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="layout" value="FF" id="flexRadioDefault1">
+            <label class="form-check-label" for="flexRadioDefault1">
+              Front-engine, Front-wheel drive (FF)
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="layout" value="FR" id="flexRadioDefault2">
+            <label class="form-check-label" for="flexRadioDefault2">
+              Front-Engine, Rear-wheel drive (FR)
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="layout" value="RR" id="flexRadioDefault1">
+            <label class="form-check-label" for="flexRadioDefault3">
+              Rear-Engine, Rear-wheel drive (RR)
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="layout" value="MR" id="flexRadioDefault2">
+            <label class="form-check-label" for="flexRadioDefault4">
+              Mid-Engine, Rear-wheel drive (MR)
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="layout" value="4WD" id="flexRadioDefault1">
+            <label class="form-check-label" for="flexRadioDefault5">
+              Four-Wheel Drive (4WD)
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="layout" value="AWD" id="flexRadioDefault2">
+            <label class="form-check-label" for="flexRadioDefault6">
+              All Wheel Drive AKA Full Time Four-Wheel Drive (AWD)
+            </label>
+          </div>
+        </div>
 
-            <div>
-                <label for="engine_config">Engine Configuration</label>
-                <select name="engine_config" id="engine_config" class="form-select">
-                    <option selected hidden><% if (editing) { %><%= car.engine_type %><%} else {%><%= `Please select an engine configuration` %><%}%></option>
+        <div class="mb-3">
+          <label for="transmission">Transmission Type</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="transmission" id="automatic" checked value="automatic">
+            <label class="form-check-label" for="automatic">
+              Automatic Transmission
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="transmission" id="manual" value="manual">
+            <label class="form-check-label" for="manual">
+              Manual Transmission
+            </label>
+          </div>
+        </div>
+
+        <div>
+          <label for="engine_config">Engine Configuration</label>
+          <select name="engine_config" id="engine_config" class="form-select">
+            <option selected hidden><% if (editing) { %><%= car.engine_type %><%} else {%><%= `Please select an engine configuration` %><%}%></option>
                     <% enginesData.forEach(function (arrayItem) {%>
-                        <option value="<%= arrayItem.config %>">
-                            <%= arrayItem.config %>
-                        </option>
-                    <%}); %>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="sale_status">Car Sale Status</label>
-                <select name="sale_status" id="sale_status" class="form-select">
-                    <option selected hidden><% if (editing) { %><%= car.sale_status %><%} else {%><%= `What is the vehicles sale status` %><%}%></option>
+            <option value="<%= arrayItem.config %>">
+              <%= arrayItem.config %>
+            </option>
+            <%}); %>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="sale_status">Car Sale Status</label>
+          <select name="sale_status" id="sale_status" class="form-select">
+            <option selected hidden><% if (editing) { %><%= car.sale_status %><%} else {%><%= `What is the vehicles sale status` %><%}%></option>
                     <% for( let i = 0; i <= sale_status.length ; i++ ) {%>
-                        <option value="<%= sale_status[i] %>">
-                            <%= sale_status[i] %>
-                        </option>
-                    <%} %>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="for_sale">For Sale?</label>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="for_sale" id="true" checked value="1">
-                    <label class="form-check-label" for="true">
-                       TRUE
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="for_sale" id="false" value="0">
-                    <label class="form-check-label" for="false">
-                        FALSE
-                    </label>
-                </div>
-            </div>
+            <option value="<%= sale_status[i] %>">
+              <%= sale_status[i] %>
+            </option>
+            <%} %>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="for_sale">For Sale?</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="for_sale" id="true" checked value="1">
+            <label class="form-check-label" for="true">
+              TRUE
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="for_sale" id="false" value="0">
+            <label class="form-check-label" for="false">
+              FALSE
+            </label>
+          </div>
+        </div>
 
-            </div>
-
-
+      </div>
 
 
-            
+      <%# Still needs engine config (button radios or selector) and color (selector?) %>
 
+      <% if (editing) { %>
+      <input type="hidden" value="<%= car.car_id %>" name="car_id">
+      <% } %>
+      <button class="btn btn-primary" type="submit">
+        <% if (editing) { %>Update Vehicle<% } else { %>Add Vehicle<% } %>
+      </button>
 
-            
-            
-
-<%# Still needs engine config (button radios or selector) and color (selector?) %>
-
-            <% if (editing) { %>
-                <input type="hidden" value="<%= car.car_id %>" name="car_id">
-            <% } %>
-            <button class="btn btn-primary" type="submit">
-                <% if (editing) { %>Update Vehicle<% } else { %>Add Vehicle<% } %>
-            </button>
-
-        </form
-    </main>
-    <%- include('../includes/end.ejs') %>
+    </form>
+  </main>
+  <%- include('../includes/end.ejs') %>
