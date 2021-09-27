@@ -1,4 +1,3 @@
-const { response } = require('express');
 const Car = require('../models/car');
 const { makes } = require("../data/makes");
 const { colors } = require('../data/colors');
