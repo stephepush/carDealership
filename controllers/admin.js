@@ -3,6 +3,7 @@ const { makes } = require("../data/makes");
 const { colors } = require('../data/colors');
 const { sale_status, salesStatus } = require('../data/saleStatus');
 const engines = require('../data/engines.json');
+const layouts = require('../data/layouts.json');
 
 
 exports.getVehicles = (req, res, next) => {
@@ -44,8 +45,8 @@ exports.getAddVehicle = (req, res, next) => {
         makesArray: makes,
         colorsArray: colors,
         sale_status: salesStatus,
-        enginesData: engines
-
+        enginesData: engines,
+        carLayouts: layouts,
     })
 }
 
@@ -104,7 +105,8 @@ exports.getEditVehicle = (req, res, next) => {
                 colorsArray: colors,
                 sale_status: salesStatus,
                 enginesData: engines,
-                car: car[0][0],
+                carLayouts: layouts,
+                car: car[0][0]
 
             })
 

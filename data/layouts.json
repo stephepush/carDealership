@@ -1,0 +1,37 @@
+[{
+        "idValue": "0",
+        "valueAttribute": "FF",
+        "labelValue": "Front-Engine, Front-wheel drive",
+        "friendly": "FWD"
+    },
+    {
+        "idValue": "1",
+        "valueAttribute": "FR",
+        "labelValue": "Front-Engine, Rear-wheel drive",
+        "friendly": "RWD"
+    },
+    {
+        "idValue": "2",
+        "valueAttribute": "RR",
+        "labelValue": "Rear-Engine, Rear-wheel drive",
+        "friendly": ""
+    },
+    {
+        "idValue": "3",
+        "valueAttribute": "MR",
+        "labelValue": "Mid-Engine, Rear-wheel drive",
+        "friendly": ""
+    },
+    {
+        "idValue": "4",
+        "valueAttribute": "4WD",
+        "labelValue": "Four-Wheel Drive",
+        "friendly": "4x4"
+    },
+    {
+        "idValue": "5",
+        "valueAttribute": "AWD",
+        "labelValue": "All Wheel Drive AKA Full-Time Four Wheel Drive",
+        "friendly": "AWD"
+    }
+]

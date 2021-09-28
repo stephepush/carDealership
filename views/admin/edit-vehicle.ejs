@@ -11,7 +11,7 @@
     <div class="mask h-100" style="background-color: rgba(211, 211, 211, 0.8);">
       <div class="d-flex justify-content-center align-items-center h-100">
         <div class="text-black ">
-          <h1 class="fw-bold mb-3">Add A Vehicle</h1>
+          <h1 class="fw-bold mb-3"><%if (!editing) { %>Add a vehicle <% } else { %>Edit Vehicle<% } %></h1>
           <%/*<h4 class="mb-3">Subheading</h4>
                         <a class="btn btn-outline-light btn-lg" href="#!" role="button"
                             >Call to action</a
@@ -86,43 +86,16 @@
         </div>
 
         <div class="mb-3">
-          <label for="layout">Car Layout</label>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="layout" value="FF" id="flexRadioDefault1">
-            <label class="form-check-label" for="flexRadioDefault1">
-              Front-engine, Front-wheel drive (FF)
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="layout" value="FR" id="flexRadioDefault2">
-            <label class="form-check-label" for="flexRadioDefault2">
-              Front-Engine, Rear-wheel drive (FR)
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="layout" value="RR" id="flexRadioDefault1">
-            <label class="form-check-label" for="flexRadioDefault3">
-              Rear-Engine, Rear-wheel drive (RR)
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="layout" value="MR" id="flexRadioDefault2">
-            <label class="form-check-label" for="flexRadioDefault4">
-              Mid-Engine, Rear-wheel drive (MR)
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="layout" value="4WD" id="flexRadioDefault1">
-            <label class="form-check-label" for="flexRadioDefault5">
-              Four-Wheel Drive (4WD)
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="layout" value="AWD" id="flexRadioDefault2">
-            <label class="form-check-label" for="flexRadioDefault6">
-              All Wheel Drive AKA Full Time Four-Wheel Drive (AWD)
-            </label>
-          </div>
+            <label for="layout">Car Layout</label>
+                
+                <% carLayouts.forEach(function(carLayout) {%>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="layout" value="<%= carLayout.valueAttribute %>" id="flexRadio<%= carLayout.idValue %>">
+                    <label class="form-check-label" for="flexRadio<%= carLayout.idValue %>">
+                    <%= carLayout.labelValue %>
+                    </label>
+                </div>
+                <%}); %>
         </div>
 
         <div class="mb-3">
