@@ -23,13 +23,13 @@
   </header>
 
 
-  <main class="container">
+  <main class="container pt-2 mt-5">
     <form class="vehicle-form" action="/admin/<% if (editing) { %>edit-vehicle<% } else { %>add-vehicle<% } %>" method="POST">
       <div class=" form-control mb-3">
         <label for="model_year">Model Year</label>
 
         <select name="model_year" id="model_year" class="form-select mb-3">
-          <option selected hidden><% if (editing) { %><%= car.model_year %><%} else {%><%= 'Select a year for the vehicle:' %><%}%></option>
+          <option selected hidden><% if (editing) { %><%= car["model_year"] %><%} else {%><%= 'Select a year for the vehicle:' %><%}%></option>
                     <% for( let i = new Date().getFullYear(); i >= 1901 ; i-- ) {%>
           <option value="<%= i %>">
             <%=  i %>
