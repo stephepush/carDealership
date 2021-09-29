@@ -1,20 +1,15 @@
 const path = require('path');
 
+const Router = require('express-promise-router')
+
 const express = require('express');
 
-const Router = require('express-promise-router')
-//const router = express.Router();
+const lotController = require('../controllers/lot');
 
+
+//const router = express.Router();
 const router = new Router()
 
-router.get('/', (req, res, next) => {
-    //res.render(path.join(__dirname, '..', 'views', 'lot', 'index.ejs'), 
-    res.render('./lot/index', 
-    {   
-        //prods: products, 
-        pageTitle: 'Virtual Lot',
-        pageName: 'Lot'
-    })
-})
+router.get('/', lotController.getVehicles);
 
 module.exports = router;

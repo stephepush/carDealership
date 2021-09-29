@@ -5,12 +5,12 @@ exports.getVehicles = (req, res, next) => {
     Car.fetchAll()
         .then((rows) => {
             console.log(rows[0]);
-
-            res.render('admin/vehicles', {
+            /*could reuse 'admin/vehicles' for lot/index later I guess. Potential todo */
+            res.render('lot/index', {
                 cars: rows[0],
-                pageTitle: 'Dealer Admin Page',
-                path: '/admin/vehicles',
-
+                path: '/',
+                pageTitle: 'Welcome to Express Autos!',
+                pageName: 'Express Autos Home'
             });
 
         })
