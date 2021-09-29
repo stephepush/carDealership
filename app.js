@@ -11,6 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 
 const adminRoutes = require('./routes/admin');
 const lotRoutes = require('./routes/lot');
+const authRoutes = require('./routes/auth')
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');
@@ -29,15 +30,15 @@ app.set('views', 'views');
 
 app.use('/admin', adminRoutes);
 app.use(lotRoutes);
+//app.use(authRoutes);
 
 app.use((req, res, next) => {
     res.status(404).render(
-            './404', 
-            { 
-                pageTitle: '404 Page',
-                pageName: 'not_found',
-            }
-        )
+        './404', {
+            pageTitle: '404 Page',
+            pageName: 'not_found',
+        }
+    )
 })
 
 /* app.use((req, res, next) => {
@@ -46,4 +47,3 @@ app.use((req, res, next) => {
 }) */
 
 app.listen(3001);
-
