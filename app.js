@@ -11,7 +11,8 @@ app.use(express.urlencoded({ extended: true }));
 
 const adminRoutes = require('./routes/admin');
 const lotRoutes = require('./routes/lot');
-const authRoutes = require('./routes/auth')
+const authRoutes = require('./routes/auth');
+const bodyParser = require('body-parser');
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');
@@ -27,7 +28,7 @@ app.set('views', 'views');
 
 //app.locals.makesArray = require("./data/makes.js");
 
-
+app.use(express.static(path.join(__dirname, 'public')));
 app.use('/admin', adminRoutes);
 app.use(lotRoutes);
 app.use(authRoutes);
