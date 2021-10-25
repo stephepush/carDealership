@@ -12,6 +12,4 @@ const router = new Router()
 
 router.get('/', lotController.getVehicles);
 
-router.get('/vehicles/:vehicleId', lotController.getVehicle);
-
 module.exports = router;
