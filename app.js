@@ -12,6 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 const adminRoutes = require('./routes/admin');
 const lotRoutes = require('./routes/lot');
 const authRoutes = require('./routes/auth');
+const userRoutes = require('./routes/user');
 const bodyParser = require('body-parser');
 
 app.set('view engine', 'ejs');
@@ -32,6 +33,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/admin', adminRoutes);
 app.use(lotRoutes);
 app.use(authRoutes);
+app.use(userRoutes);
+
 
 app.use((req, res, next) => {
     res.status(404).render(
