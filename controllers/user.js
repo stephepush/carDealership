@@ -3,8 +3,8 @@ const User = require('../models/user');
 exports.postAddUser = (req, res, next) => {
     const email = req.body.email;
     const username = req.body.username;
-    const hash;
-    const salt;
+    //const hash;
+    //const salt;
     const person_img = req.body.person_img;
     const dob = req.body.dob;
     const gender = req.body.gender;
