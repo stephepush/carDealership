@@ -2,22 +2,37 @@ const db = require('./database');
 
 module.exports = class User {
     constructor(
-        id, email, username, hash, salt,
-        person_id, person_img, dob, gender,
+        id, email, username, hash, isAdmin,
+        person_id, person_img, dob,
         newsletter, is_active
     ) {
         this.id = id;
         this.email = email;
         this.username = username;
-        //this.hash = hash;
+        this.hash = hash;
         //this.salt = salt;
+        this.isAdmin = 0; //changeable from db or maybe admin backend
+        this.dob = dob;
+        this.newsletter = newsletter;
         this.person_id = person_id;
         this.person_img = person_img;
-        this.dob = dob;
-        this.gender = gender;
-        this.newsletter = newsletter;
-        this.is_active = is_active
+        //this.gender = gender;
+
+        this.is_active = 1
     }
+
+    static findOne(username) {
+        //console.log(username + " from line 25 database.js")
+        return connection.execute(
+            "SELECT * FROM users WHERE username = ?", [username]
+        )
+    };
+
+    static findById(id) {
+        return connection.execute(
+            "SELECT user_id, username, hash, admin FROM users WHERE user_id = ?", [id]
+        )
+    };
 
     save() {
         let pk;
@@ -28,7 +43,7 @@ module.exports = class User {
                 return db.query('START TRANSACTION');
             })
             .then(() => {
-                const user_insert = db.query('INSERT INTO users (email, username, hash, salt) VALUES (?,?,?,?)', [this.email, this.username, this.hash, this.salt]);
+                const user_insert = db.query('INSERT INTO users (email, username, hash) VALUES (?,?,?)', [this.email, this.username, this.hash]);
                 return user_insert;
             })
             .then((user_insert) => {
@@ -37,7 +52,7 @@ module.exports = class User {
                 pk = user_insert[0]['insertId']
             })
             .then(() => {
-                db.query('INSERT INTO persons (person_img, dob, gender, newsletter) VALUES(?,?,?,?,)', [this.person_img, this.dob, this.gender, this.newsletter])
+                db.query('INSERT INTO persons (person_img, dob, newsletter) VALUES(?,?,?)', [this.person_img, this.dob, this.gender, this.newsletter])
             })
             .then(() => {
                 return db.query('COMMIT');
