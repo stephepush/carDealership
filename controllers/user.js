@@ -1,19 +1,24 @@
 const User = require('../models/user');
-const { hashPassword } = require('../lib/passwordUtils/')
+const { hashPassword } = require('../lib/passwordUtils')
 
-exports.postAddUser = (req, res, next) => {
+exports.getSignUp = (req, res, next) => {
+    res.render('user/sign-up', {
+        pageTitle: "Sign Up",
+        //path: 'user/signup'
+    })
+}
+
+exports.postSignUp = async(req, res, next) => {
     const email = req.body.email;
     const username = req.body.username;
-    const hash = hashPassword(req.body.password);
-    const salt;
-    const isAdmin = 0;
+    const hash = await hashPassword(req.body.password);
+    //const isAdmin = 0;
     const person_img = req.body.person_img;
     const dob = req.body.dob;
-    const gender = req.body.gender;
-    const newsletter = req.body.gender;
+    const newsletter = req.body.newsletter;
 
     const user = new User(
-        null, email, username, hash, salt, person_img, dob, gender, newsletter, isAdmin
+        null, email, username, hash, person_img, dob, newsletter, /*isAdmin*/
     );
     console.log(user);
     user
