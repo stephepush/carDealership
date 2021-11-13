@@ -8,15 +8,15 @@ const router = new Router()
 
 
 
-/* router.get('/create-user/', userController.getCreateUser);
+router.get('/signup/', userController.getSignUp);
 
-router.post('/create-user', userController.createUser);
+router.post('/signup', userController.postSignUp);
 
-router.get('/edit-user/:userId', userController.editUser);
+// router.get('/edit-user/:userId', userController.editUser);
 
-router.post('/edit-user/', userController.editUser)
+// router.post('/edit-user/', userController.editUser)
 
-router.get('/profile/:userId', userController.getUserProfile);
- */
+// router.get('/profile/:userId', userController.getUserProfile);
+
 
 module.exports = router;
