@@ -1,5 +1,5 @@
 exports.getLogin = (req, res, next) => {
-    console.log(req.get('Cookie').split(';')[1]);
+    //console.log(req.get('Cookie').split(';')[1]);
     res.render('auth/login', {
         path: '/login',
         pageTitle: 'Login to Express Autos',
