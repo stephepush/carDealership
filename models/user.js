@@ -3,8 +3,7 @@ const db = require('./database');
 module.exports = class User {
     constructor(
         id, email, username, hash, isAdmin,
-        person_id, person_img, dob,
-        newsletter, is_active
+        dob, newsletter, person_id, person_img, is_active
     ) {
         this.id = id;
         this.email = email;
@@ -52,12 +51,13 @@ module.exports = class User {
                 pk = user_insert[0]['insertId']
             })
             .then(() => {
-                db.query('INSERT INTO persons (person_img, dob, newsletter) VALUES(?,?,?)', [this.person_img, this.dob, this.gender, this.newsletter])
+                db.query('INSERT INTO persons ( dob, newsletter) VALUES(?,?)', [this.dob, this.newsletter])
             })
             .then(() => {
                 return db.query('COMMIT');
             })
             .catch((error) => {
+                console.log(error)
                 return db.query('ROLLBACK')
             })
     }
