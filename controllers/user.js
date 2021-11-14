@@ -18,13 +18,14 @@ exports.postSignUp = async(req, res, next) => {
     const newsletter = req.body.newsletter;
 
     const user = new User(
-        null, email, username, hash, person_img, dob, newsletter, /*isAdmin*/
+        null, email, username, hash, person_img, dob, newsletter
     );
     console.log(user);
     user
         .save()
         .then(() => {
-            res.redirect('/');
+            res.redirect('/login');
         })
         .catch(err => console.log(err))
+
 }
