@@ -7,6 +7,36 @@ const express = require('express');
 const app = express();
 //mountRoutes(app)
 
+//auth w/ passport, express-session, express-mysql-session, etc attempt
+const session = require("express-session");
+//express-session allows you to create session middleware
+const passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy
+const MySQLStore = require('express-mysql-session')(session);
+/*
+    express-mysql-session initially creates a sessions table
+    if necessary, then manages sessions using your mysql db instance
+*/
+const { pool } = require("../models/database.js")
+    /* 
+        import pool credentials from database.js to allow MySQLStore to connect
+        to db instance
+    */
+
+const connection = pool.promise()
+const sessionStore = new MySQLStore({}, connection);
+
+//express-sesison session options below
+app.use(session({
+    secret: 'secret',
+    resave: false,
+    saveUninitialized: true,
+    store: sessionStore,
+    cookie: {
+        maxAge: 1000 * 60 * 60 * 24
+    }
+}))
+
 app.use(express.urlencoded({ extended: true }));
 
 const adminRoutes = require('./routes/admin');
