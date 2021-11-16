@@ -7,6 +7,8 @@ const express = require('express');
 const app = express();
 //mountRoutes(app)
 
+require('dotenv').config()
+
 //auth w/ passport, express-session, express-mysql-session, etc attempt
 const session = require("express-session");
 //express-session allows you to create session middleware
@@ -28,7 +30,7 @@ const sessionStore = new MySQLStore({}, connection);
 
 //express-sesison session options below
 app.use(session({
-    secret: 'secret',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
     store: sessionStore,
