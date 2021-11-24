@@ -20,16 +20,16 @@ module.exports = class User {
         this.is_active = 1
     }
 
-    static findOne(username) {
+    static findOne(email) {
         //console.log(username + " from line 25 database.js")
-        return connection.execute(
-            "SELECT * FROM users WHERE username = ?", [username]
+        return db.query(
+            "SELECT * FROM users WHERE email = ?", [email]
         )
     };
 
     static findById(id) {
-        return connection.execute(
-            "SELECT user_id, username, hash, admin FROM users WHERE user_id = ?", [id]
+        return db.execute(
+            "SELECT user_id, username, hash FROM users WHERE user_id = ?", [id]
         )
     };
 
