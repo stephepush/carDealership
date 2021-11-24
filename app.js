@@ -13,18 +13,21 @@ require('dotenv').config()
 const session = require("express-session");
 //express-session allows you to create session middleware
 const passport = require("passport");
-const LocalStrategy = require("passport-local").Strategy
+//const LocalStrategy = require("passport-local").Strategy
 const MySQLStore = require('express-mysql-session')(session);
-/*
-    express-mysql-session initially creates a sessions table
-    if necessary, then manages sessions using your mysql db instance
-*/
-const { pool } = require("../models/database.js")
+require('./config/passport.js')
+    /*
+        express-mysql-session initially creates a sessions table
+        if necessary, then manages sessions using your mysql db instance
+    */
+const { pool } = require("./models/database.js")
     /* 
         import pool credentials from database.js to allow MySQLStore to connect
         to db instance
     */
 
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }));
 const connection = pool.promise()
 const sessionStore = new MySQLStore({}, connection);
 
@@ -35,14 +38,19 @@ app.use(session({
     saveUninitialized: true,
     store: sessionStore,
     cookie: {
-        maxAge: 1000 * 60 * 60 * 24
+        maxAge: 1000 * 60 * 60 * .05
     }
 }))
+
 app.use(passport.initialize());
 app.use(passport.session());
 
 
-app.use(express.urlencoded({ extended: true }));
+app.use((req, res, next) => {
+    console.log(req.session);
+    console.log(req.user);
+    next();
+})
 
 const adminRoutes = require('./routes/admin');
 const lotRoutes = require('./routes/lot');
@@ -69,6 +77,8 @@ app.use('/admin', adminRoutes);
 app.use(lotRoutes);
 app.use(authRoutes);
 app.use(userRoutes);
+
+//app.disable('view cache')
 
 
 app.use((req, res, next) => {
