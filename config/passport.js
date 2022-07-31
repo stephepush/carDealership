@@ -21,7 +21,10 @@ function verifyCallback(req, email, password, done) {
         .then((dbResponse) => {
             //console.log(dbResponse[0][0]);
             let user = dbResponse[0][0];
-            if (!user) { return done(null, false); }
+            if (!user) { 
+                return done(null, false); 
+            
+            }
             //no error, but also no user 
             console.log(
                 `
@@ -31,13 +34,17 @@ function verifyCallback(req, email, password, done) {
                 `
             );
 
-            validatesPassword(password, user.hash)
+            return validatesPassword(password, user.hash)
                 .then((isValid) => {
                     if (isValid) {
                         return done(null, user);
                     } else {
                         return done(null, false);
                     }
+                })
+                .catch((err) => {
+                    console.log(err);
+                    done(err);
                 })
                 //const isValid = false;
 
