@@ -20,6 +20,12 @@ module.exports = class User {
         this.is_active = 1
     }
 
+    static findAll() {
+        return db.query(
+            "SELECT * FROM users"
+        )
+    };
+
     static findOne(email) {
         //console.log(username + " from line 25 database.js")
         return db.query(
@@ -33,7 +39,7 @@ module.exports = class User {
         )
     };
 
-    save() {
+    async save() {
         let pk;
 
         return db.getConnection()
