@@ -1,10 +1,23 @@
 const Car = require('../models/car');
+const User = require('../models/user');
 const { makes } = require("../data/makes");
 const { colors } = require('../data/colors');
 const { sale_status, salesStatus } = require('../data/saleStatus');
 const engines = require('../data/engines.json');
 const layouts = require('../data/layouts.json');
 
+
+exports.getUsers = (req, res, next) => {
+    User.findAll()
+        .then((rows) => {
+            res.render('admin/users', {
+                users: rows[0],
+                pageTitle: 'Admin: User Listing',
+                pageName: 'admin_users',
+                path:'admin/users'
+            })
+        })
+}
 
 exports.getVehicles = (req, res, next) => {
     Car.fetchAll()

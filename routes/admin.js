@@ -29,5 +29,7 @@ router.post('/edit-vehicle', adminController.postEditVehicle);
 
 router.post('/delete-vehicle/', adminController.postDeleteVehicle);
 
+//route for VIEWING ALL users
+router.get('/users', adminController.getUsers);
 
 module.exports = router;
