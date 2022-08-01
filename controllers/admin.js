@@ -10,8 +10,12 @@ const layouts = require('../data/layouts.json');
 exports.getUsers = (req, res, next) => {
     User.findAll()
         .then((rows) => {
+            const rawUserData = rows[0];
+            const userArr = Object.values(JSON.parse(JSON.stringify(rawUserData)))
             res.render('admin/users', {
-                users: rows[0],
+                users: userArr,
+                //test: users.forEach(item => { console.log(item.email)}) ,
+                test2: console.log(userArr),
                 pageTitle: 'Admin: User Listing',
                 pageName: 'admin_users',
                 path:'admin/users'
@@ -22,7 +26,7 @@ exports.getUsers = (req, res, next) => {
 exports.getVehicles = (req, res, next) => {
     Car.fetchAll()
         .then((rows) => {
-            console.log(rows[0]);
+            //console.log(rows[0]);
 
             res.render('admin/vehicles', {
                 cars: rows[0],
