@@ -22,15 +22,15 @@
                             <th scope="row"><%= user.user_id %></th>
                             <td><%= user.username %></td>
                             <td><%= user.email %></td>
-                            <td><%=  %></td>
+                            <td><%= user.user_type %></td>
                             <td>
                                 <select name="user-types" id="user-type-select" class="form-select">
-                                    <option value="">Admin</option>
-                                    <option value="">Dealer</option>
-                                    <option value="">User</option>
+                                    <option value="admin">Admin</option>
+                                    <option value="dealer">Dealer</option>
+                                    <option value="user">User</option>
                                 </select>
                             </td>
-                            <td></td>
+                            <td><%= user.is_active %></td>
                         </tr>
                     <% } %>
 
