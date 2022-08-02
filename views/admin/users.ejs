@@ -19,10 +19,10 @@
                 <tbody>
                     <% for (let user of users) { %>
                         <tr>
-                            <th scope="row"></th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <th scope="row"><%= user.user_id %></th>
+                            <td><%= user.username %></td>
+                            <td><%= user.email %></td>
+                            <td><%=  %></td>
                             <td>
                                 <select name="user-types" id="user-type-select" class="form-select">
                                     <option value="">Admin</option>
