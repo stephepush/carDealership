@@ -1,0 +1,16 @@
+<%- include('../includes/head.ejs') %>
+</head>
+<body>
+    <%- include('../includes/nav.ejs') %>
+    <main class="container py-5">
+        <h1><%= user.username %></h1>
+        <ul>
+            <li class="items">email: <%= user.email %></li>
+            <li class="items">account created: <%= %></li>
+            <li class="items">active: <%= user.is_active %></li>
+            <li class="items">user type: <%= user.user_type %></li>
+            <li class="items">change user type: <%= %></li>
+        </ul>
+    </main>
+    <%- include('../includes/end.ejs') %>
+   
