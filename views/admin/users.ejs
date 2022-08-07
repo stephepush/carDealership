@@ -1,6 +1,8 @@
 <%- include('../includes/head.ejs') %>
+<script src="/scripts/admin.js"></script>
 </head>
 <body>
+    
     <%- include('../includes/nav.ejs') %>
     <main class="container">
         <h1>Users</h1>
@@ -16,20 +18,15 @@
                         <th scope="col">Active?</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="user-body">
                     <% for (let user of users) { %>
-                        <tr>
-                            <th scope="row"><%= user.user_id %></th>
+                        <tr class="user">
+                            <th scope="row"><a href="/admin/user/<%= user.user_id %>"><%= user.user_id %></a>
+                                <input type="hidden" value="<%= user.user_id %>" name="userId" id="userId<%= user.user_id %>" class="userid_values">
+                            </th>
                             <td><%= user.username %></td>
                             <td><%= user.email %></td>
                             <td><%= user.user_type %></td>
-                            <td>
-                                <select name="user-types" id="user-type-select" class="form-select">
-                                    <option value="admin">Admin</option>
-                                    <option value="dealer">Dealer</option>
-                                    <option value="user">User</option>
-                                </select>
-                            </td>
                             <td><%= user.is_active %></td>
                         </tr>
                     <% } %>
@@ -41,4 +38,7 @@
             <% } %>
         
     </main>
+    <script src="/scripts/adminUsersScript.js"></script>
     <%- include('../includes/end.ejs') %>
+    
+    
