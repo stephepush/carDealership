@@ -34,8 +34,8 @@ module.exports = class User {
     };
 
     static findById(id) {
-        return db.execute(
-            "SELECT user_id, username, hash FROM users WHERE user_id = ?", [id]
+        return db.query(
+            "SELECT * FROM users WHERE user_id = ?", [id]
         )
     };
 

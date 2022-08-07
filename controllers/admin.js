@@ -15,12 +15,32 @@ exports.getUsers = (req, res, next) => {
             res.render('admin/users', {
                 users: userArr,
                 //test: users.forEach(item => { console.log(item.email)}) ,
-                test2: console.log(userArr),
-                pageTitle: 'Admin: User Listing',
+                //test2: console.log(userArr),
+                pageTitle: 'Admin User Listing',
                 pageName: 'admin_users',
-                path:'admin/users'
+                path: 'admin/users'
             })
         })
+}
+
+exports.getUser = (req, res, next) => {
+    const userId = req.params.userId;
+    User.findById(userId)
+        .then((result) =>{
+            const rawUserData = result[0]
+            const stringifiedUserData = Object.values(JSON.parse(JSON.stringify(rawUserData)))
+            res.render('admin/user', {
+                user: stringifiedUserData[0],
+                userTest: console.log(stringifiedUserData[0]),
+                pageTitle: `Admin User ${userId} Profile`,
+                pageName: 'admin_user',
+                path: 'admin/user/:userId'
+            })
+        }) 
+}
+
+exports.postUpdateUserType = (req, res, next) => {
+    //const userId = req.body.
 }
 
 exports.getVehicles = (req, res, next) => {
