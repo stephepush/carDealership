@@ -17,7 +17,8 @@ module.exports = class User {
         this.person_img = person_img;
         //this.gender = gender;
 
-        this.is_active = 1
+        this.is_active = 1;
+        
     }
 
     static findAll() {
@@ -38,6 +39,13 @@ module.exports = class User {
             "SELECT * FROM users WHERE user_id = ?", [id]
         )
     };
+
+    static updateUserType(id, userType) {
+        db.execute(
+            "UPDATE users, SET user_type = ? WHERE user_id = ?", [userType, id]
+
+        )
+    }
 
     async save() {
         let pk;
