@@ -22,7 +22,7 @@
                     <% for (let user of users) { %>
                         <tr class="user">
                             <th scope="row"><a href="/admin/user/<%= user.user_id %>"><%= user.user_id %></a>
-                                <input type="hidden" value="<%= user.user_id %>" name="userId" id="userId<%= user.user_id %>" class="userid_values">
+                                <input type="hidden" value="<%= user.user_id %>" name="userId" id="hiddenUserId<%= user.user_id %>" class="userid_values">
                             </th>
                             <td><%= user.username %></td>
                             <td><%= user.email %></td>
