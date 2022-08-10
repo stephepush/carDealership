@@ -39,8 +39,14 @@ exports.getUser = (req, res, next) => {
         }) 
 }
 
-exports.postUpdateUserType = (req, res, next) => {
-    //const userId = req.body.
+exports.updateUserType = (req, res, next) => {
+    const userId = req.body.userId
+    const userType = req.body.user-types
+    User.updateUserType(userId, userType)
+    .then(() => {
+        console.log('User type updated');
+        res.json();
+    })
 }
 
 exports.getVehicles = (req, res, next) => {
