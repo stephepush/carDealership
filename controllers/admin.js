@@ -41,12 +41,12 @@ exports.getUser = (req, res, next) => {
 
 exports.updateUserType = (req, res, next) => {
     const userId = req.body.userId
-    const userType = req.body.user-types
-    User.updateUserType(userId, userType)
-    .then(() => {
+    const userType = req.body.userType
+    console.log(User.updateUserType(userId, userType))
+    /*.then(
         console.log('User type updated');
-        res.json();
-    })
+        res.json()
+    )*/
 }
 
 exports.getVehicles = (req, res, next) => {
