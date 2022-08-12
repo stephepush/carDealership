@@ -12,8 +12,8 @@ let userIdNumber = document.getElementById('hiddenUserId')
     console.log(userTypeSelect.options[userTypeSelect.selectedIndex].value)
 }) */
 userTypeButton.addEventListener('click', (event)=>{
-    console.log(userTypeSelect.value);
-    console.log(userIdNumber.value);
+    //console.log(userTypeSelect.value);
+    //console.log(userIdNumber.value);
     
     fetch("/admin/user/userType", {
         method: "post",
@@ -27,10 +27,25 @@ userTypeButton.addEventListener('click', (event)=>{
         })
         
     })
-    .then(result => {
-            console.log(result)
+        .then(res => {
+                return res.json()
+            })
+        .then(data => {
+            JSON.stringify(data)
+            document.getElementById('user-type-el').innerHTML = `<p>user type: ${data.userType}</p>`
+
+
+            //needs to be looked at when working on error handling
         })
-        /*.catch(err => {
-            console.log(err)
-        })*/
+
+            
+        
+        /*.then(json => {
+            JSON.parse(json)
+            //document.getElementById('user-type-el').innerHTML = `<p>user type: ${res.userType}</p>`;
+        })
+        .then(data => console.log(data))
+            /*.catch(err => {
+                console.log(err)
+            })*/
 })

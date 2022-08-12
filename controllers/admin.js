@@ -42,11 +42,17 @@ exports.getUser = (req, res, next) => {
 exports.updateUserType = (req, res, next) => {
     const userId = req.body.userId
     const userType = req.body.userType
-    console.log(User.updateUserType(userId, userType))
-    /*.then(
-        console.log('User type updated');
-        res.json()
-    )*/
+    responseData = 
+        {
+            userId: userId,
+            userType: userType
+        }
+    User.updateUserType(userId, userType)
+        /*.then((responseData) => {
+            res.json(responseData)  
+        })*/
+    res.json(responseData)
+        //come back here and make a more flexible solution with error handling
 }
 
 exports.getVehicles = (req, res, next) => {
