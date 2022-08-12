@@ -1,0 +1,26 @@
+<%- include('../includes/head.ejs') %>
+</head>
+<body>
+    <%- include('../includes/nav.ejs') %>
+    <main class="container py-5">
+        <h1><%= user.username %></h1>
+        <ul>
+            <li class="items">email: <%= user.email %></li>
+            <li class="items">account created: <%= %></li>
+            <li class="items">active: <%= user.is_active %></li>
+            <li class="items" id="user-type-el">user type: <%= user.user_type %></li>
+            <li class="items">
+                <label>change user type:</label>
+                <select name="user-types" id="user-type-select">
+                    <option value="user">User</option>
+                    <option value="dealer">Dealer</option>
+                    <option value="admin">Admin</option>
+                </select>
+                <input type="hidden" value="<%= user.user_id %>" name="userId" id="hiddenUserId" class="userid_values">
+                <button id="user-type-submit">Submit</button>
+            </li>
+        </ul>
+    </main>
+    <script src="/scripts/adminUsersScript.js"></script>
+    <%- include('../includes/end.ejs') %>
+   

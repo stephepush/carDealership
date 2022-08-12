@@ -1,4 +1,5 @@
 const Car = require('../models/car');
+const User = require('../models/user');
 const { makes } = require("../data/makes");
 const { colors } = require('../data/colors');
 const { sale_status, salesStatus } = require('../data/saleStatus');
@@ -6,10 +7,58 @@ const engines = require('../data/engines.json');
 const layouts = require('../data/layouts.json');
 
 
+exports.getUsers = (req, res, next) => {
+    User.findAll()
+        .then((rows) => {
+            const rawUserData = rows[0];
+            const userArr = Object.values(JSON.parse(JSON.stringify(rawUserData)))
+            res.render('admin/users', {
+                users: userArr,
+                //test: users.forEach(item => { console.log(item.email)}) ,
+                //test2: console.log(userArr),
+                pageTitle: 'Admin User Listing',
+                pageName: 'admin_users',
+                path: 'admin/users'
+            })
+        })
+}
+
+exports.getUser = (req, res, next) => {
+    const userId = req.params.userId;
+    User.findById(userId)
+        .then((result) =>{
+            const rawUserData = result[0]
+            const stringifiedUserData = Object.values(JSON.parse(JSON.stringify(rawUserData)))
+            res.render('admin/user', {
+                user: stringifiedUserData[0],
+                userTest: console.log(stringifiedUserData[0]),
+                pageTitle: `Admin User ${userId} Profile`,
+                pageName: 'admin_user',
+                path: 'admin/user/:userId'
+            })
+        }) 
+}
+
+exports.updateUserType = (req, res, next) => {
+    const userId = req.body.userId
+    const userType = req.body.userType
+    responseData = 
+        {
+            userId: userId,
+            userType: userType
+        }
+    User.updateUserType(userId, userType)
+        /*.then((responseData) => {
+            res.json(responseData)  
+        })*/
+    res.json(responseData)
+        //come back here and make a more flexible solution with error handling
+}
+
 exports.getVehicles = (req, res, next) => {
     Car.fetchAll()
         .then((rows) => {
-            console.log(rows[0]);
+            //console.log(rows[0]);
 
             res.render('admin/vehicles', {
                 cars: rows[0],

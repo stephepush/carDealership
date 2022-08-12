@@ -1,0 +1,44 @@
+<%- include('../includes/head.ejs') %>
+<script src="/scripts/admin.js"></script>
+</head>
+<body>
+    
+    <%- include('../includes/nav.ejs') %>
+    <main class="container">
+        <h1>Users</h1>
+        <%  if (users.length > 0){ %>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">User Type</th>
+                        <th scope="col">User Change</th>
+                        <th scope="col">Active?</th>
+                    </tr>
+                </thead>
+                <tbody class="user-body">
+                    <% for (let user of users) { %>
+                        <tr class="user">
+                            <th scope="row"><a href="/admin/user/<%= user.user_id %>"><%= user.user_id %></a>
+                                <input type="hidden" value="<%= user.user_id %>" name="userId" id="hiddenUserId<%= user.user_id %>" class="userid_values">
+                            </th>
+                            <td><%= user.username %></td>
+                            <td><%= user.email %></td>
+                            <td><%= user.user_type %></td>
+                            <td><%= user.is_active %></td>
+                        </tr>
+                    <% } %>
+
+                </tbody>
+            </table>
+        <% } else { %>
+            <h2> No Users Found!</h2>
+            <% } %>
+        
+    </main>
+    
+    <%- include('../includes/end.ejs') %>
+    
+    

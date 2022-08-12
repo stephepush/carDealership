@@ -1,4 +1,5 @@
 <%- include('../includes/head.ejs') %>
+<script src="/scripts/minimumDate.js" defer></script>
 </head>
 
 <body>
@@ -11,7 +12,7 @@
     <div class="mask h-100" style="background-color: rgba(211, 211, 211, 0.8);">
       <div class="d-flex justify-content-center align-items-center h-100">
         <div class="text-black ">
-          <h1 class="fw-bold mb-3">Express Autos: User Login</h1>
+          <h1 class="fw-bold mb-3">Express Autos: Sign Up!</h1>
           <%/*<h4 class="mb-3">Subheading</h4>
                         <a class="btn btn-outline-light btn-lg" href="#!" role="button"
                             >Call to action</a
@@ -22,26 +23,40 @@
   </div>
   </header>
 
-  <main 
-    class="container pt-2 pb-5 mt-5"
-    style="min-height: 62vh;">
-    <form action="/login" method="POST">
+  <main class="container pt-2 pb-5 mt-5" style="min-height: 62vh;">
+    <form action="/signup" method="POST">
       <div class="mb-3">
         <label for="email" class="form-label">Email address</label>
-        <input type="email" class="form-control" id='email' name='email' aria-describedby="emailHelp">
+        <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp">
         <div id="emailsubText" class="form-text">We'll never share your email with anyone else.</div>
       </div>
       <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="username" class="form-control" name="username" id="username" aria-describedby="usernameHelp">
+        <div id="usernamesubText" class="form-text">Six at party, no pony-trap, taxis.</div>
+      </div>
+      <div class="mb-3">
         <label for="password" class="form-label">Password</label>
-        <input type="password" class="form-control" name='password' id="password">
+        <input type="password" class="form-control" id="password" name="password">
       </div>
       <%/*<div class="mb-3 form-check">
         <input type="checkbox" class="form-check-input" id="exampleCheck1">
         <label class="form-check-label" for="exampleCheck1">Check me out</label>
       </div>*/%>
-      <button type="submit" class="btn btn-primary">Login</button>
+      <div class="mb-3">
+        <label for="start">Date of Birth</label>
+        <input type="date" id='dob' name="dob">
+        <div id="usernamesubText" class="form-text">Must be 18 and up to sign up</div>
+      </div>
+      <div class="mb-5">
+        <input type="checkbox" id="subscribeNews" name="newsletter" value="1">
+        <label for="subscribeNews">Subscribe to Express Autos' newsletter?</label>
+
+      </div>
+      <button type="submit" class="btn btn-primary">Sign Up</button>
     </form>
   </main>
+
 
 
   <%- include('../includes/end.ejs') %>
