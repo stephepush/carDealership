@@ -35,7 +35,7 @@ userTypeButton.addEventListener('click', (event)=>{
             document.getElementById('user-type-el').innerHTML = `<p>user type: ${data.userType}</p>`
 
 
-            //needs to be looked at when working on error handling
+            //needs to be looked at when workinggit on error handling
         })
 
             

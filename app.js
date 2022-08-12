@@ -33,7 +33,8 @@ const sessionStore = new MySQLStore({}, connection);
 
 //express-sesison session options below
 app.use(session({
-    secret: process.env.SESSION_SECRET,
+    //secret: process.env.SESSION_SECRET,
+    secret: 'province-scaling-spooky-crewmate-sleeve',
     resave: false,
     saveUninitialized: true,
     store: sessionStore,
@@ -56,7 +57,7 @@ const adminRoutes = require('./routes/admin');
 const lotRoutes = require('./routes/lot');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
-const bodyParser = require('body-parser');
+//const bodyParser = require('body-parser');
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');
