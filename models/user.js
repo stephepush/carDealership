@@ -41,7 +41,7 @@ module.exports = class User {
     };
 
     static updateUserType(id, userType) {
-        db.execute(
+        return db.execute(
             "UPDATE users SET user_type = ? WHERE user_id = ?", [userType, id]
 
         )
