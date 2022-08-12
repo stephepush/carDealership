@@ -1,4 +1,4 @@
-# h1 carDealership
+# carDealership
 A car dealership site built using Node/Express/MySQL (using the MySQL2 connector/driver)
 
 h2 Todos
@@ -9,7 +9,7 @@ h2 Todos
 * error handling
 
 
-# h2 _faroff_ todos
+## _faroff_ todos
 * conversion to async/await
 * migration/conversion to postgres
 * decouple frontend/backend 
