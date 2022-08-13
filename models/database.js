@@ -2,8 +2,8 @@ const mysql = require('mysql2');
 
 const pool = mysql.createPool({
     host: 'localhost',
-    user: 'admin',
-    password: 'hello',
+    user: 'dbeaver_user',
+    password: 'password',
     database: 'express_autos_demo',
     //multipleStatements: true
 })
