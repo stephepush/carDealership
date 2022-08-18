@@ -4,7 +4,7 @@ const pool = mysql.createPool({
     host: 'localhost',
     user: 'dbeaver_user',
     password: 'password',
-    database: 'express_autos_demo',
+    database: 'express_autos',
     //multipleStatements: true
 })
 
