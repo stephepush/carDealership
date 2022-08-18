@@ -1,5 +1,7 @@
 const User = require('../models/user');
-const { hashPassword } = require('../lib/passwordUtils')
+const { hashPassword } = require('../lib/passwordUtils');
+
+const { validationResult  } = require('express-validator')
 
 exports.getSignUp = (req, res, next) => {
     res.render('user/sign-up', {
@@ -8,7 +10,37 @@ exports.getSignUp = (req, res, next) => {
     })
 }
 
-exports.postSignUp = async(req, res, next) => {
+exports.postSignUp = 
+
+    /*[
+        body('email').trim().normalizeEmail(),
+        body('username').notEmpty().trim().escape().isAlphanumeric(),
+        body('password').isStrongPassword({
+            minLength: 8,
+            minLowercase: 1,
+            minUppercase: 1,
+            minNumbers: 1,
+            minSymbols: 1,
+            returnScore: false,
+            pointsPerUnique: 1,
+            pointsPerRepeat: 0.5,
+            pointsForContainingLower: 10,
+            pointsForContainingUpper: 10,
+            pointsForContainingNumber: 10,
+            pointsForContainingSymbol: 10,}),
+        body('dob').isEmpty().withMessage("Must provide a Date of Birth").isISO8601().toDate()     
+    ],*/ 
+    async(req, res, next) => {
+
+    const errors = validationResult(req);
+
+    if(!errors.isEmpty()) {
+        return res.status(400).json({
+            success: false,
+            errors: errors.array()
+        })
+    }
+
     const email = req.body.email;
     const username = req.body.username;
     const hash = await hashPassword(req.body.password);
