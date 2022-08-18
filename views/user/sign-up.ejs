@@ -1,5 +1,6 @@
 <%- include('../includes/head.ejs') %>
 <script src="/scripts/minimumDate.js" defer></script>
+<script src="/scripts/signupScripts.js" defer></script>
 </head>
 
 <body>
@@ -21,10 +22,10 @@
       </div>
     </div>
   </div>
-  </header>
+  </header> 
 
   <main class="container pt-2 pb-5 mt-5" style="min-height: 62vh;">
-    <form action="/signup" method="POST">
+    <form id="signupForm">
       <div class="mb-3">
         <label for="email" class="form-label">Email address</label>
         <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp">
@@ -53,8 +54,9 @@
         <label for="subscribeNews">Subscribe to Express Autos' newsletter?</label>
 
       </div>
-      <button type="submit" class="btn btn-primary">Sign Up</button>
+      <button class="btn btn-primary" id="submit-button" type="submit">Sign Up</button>
     </form>
+
   </main>
 
 
